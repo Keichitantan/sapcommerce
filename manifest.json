@@ -1,7 +1,7 @@
 {
     "commerceSuiteVersion": "1811.0",
     "extensions": [
-		"ordermanagementaddon",
+	"ordermanagementaddon",
         "orderselfserviceaddon",
         "ordermanagementwebservices",
         "warehousing", 
