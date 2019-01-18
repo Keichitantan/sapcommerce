@@ -1,11 +1,156 @@
 {
     "commerceSuiteVersion": "1811.0",
     "extensions": [
-        "modeltacceleratorservices",
-        "electronicsstore",
+		"ordermanagementaddon",
+        "orderselfserviceaddon",
+        "ordermanagementwebservices",
+        "warehousing", 
+        "warehousingbackoffice", 
+        "warehousingwebservices",
+        "adaptivesearchsolr",
+        "adaptivesearchbackoffice",
+        "adaptivesearchsamplesaddon",
+        "commerceservicesbackoffice",
+        "solrfacetsearchbackoffice",
+        "solrserver",
+        "yacceleratorbackoffice",
+        "yacceleratorinitialdata",
+        "yacceleratorordermanagement",
         "yacceleratorstorefront",
-        "backoffice"
+        "yaddon",
+        "ycommercewebservices",
+        "cmsoccaddon",
+        "electronicsstore",
+        "apparelstore",
+        "acceleratorwebservicesaddon",
+        "assistedservicestorefront",
+        "assistedservicewebservices",
+        "customersupportbackoffice",
+        "customerticketingaddon",
+        "commerceorgsamplesaddon",
+        "ticketsystembackoffice",
+        "consignmenttrackingbackoffice",
+        "rulebuilderbackoffice",
+        "couponbackoffice",
+        "droolsruleengineservices",
+        "couponfacades",
+        "promotionenginesamplesaddon",
+        "consignmenttrackingaddon",
+        "pcmbackofficesamplesaddon",
+        "consignmenttrackingoccaddon",
+        "outboundservices",
+        "odata2webservices",
+        "odata2webservicesfeaturetests",
+        "kymaintegrationbackoffice",
+        "kymaintegrationsampledata"
     ],
+   "useConfig": {
+        "solr": {
+            "location": "config/solr"
+        }
+    },
+    "properties": [
+        {
+            "key": "hac.webroot",
+            "value": "/hac"
+        },
+        {
+            "key": "cronjob.timertask.loadonstartup",
+            "value": "true"
+        },
+        {
+            "key": "regioncache.stocklevelcacheregion.size",
+            "value": "20000"
+        },
+        {
+            "key": "regioncache.stocklevelcacheregion.evictionpolicy",
+            "value": "FIFO"
+        },
+        {
+            "key": "installed.tenants",
+            "value": ""
+        },
+        {
+            "key": "solrserver.instances.default.ssl.enabled",
+            "value": "false"
+        },
+        {
+            "key": "solrserver.instances.default.ssl.keyStorePassword",
+            "value": ""
+        },
+        {
+            "key": "solrserver.instances.default.zk.prop.urlScheme",
+            "value": "http"
+        },
+        {
+            "key": "solrserver.instances.default.ssl.trustStorePassword",
+            "value": ""
+        },
+        {
+            "key": "task.polling.interval",
+            "value": "1"
+        },
+        {
+            "key": "task.polling.interval.min",
+            "value": "1"
+        },
+        {
+            "key": "google.api.key",
+            "value": "<GOOGLE_API_KEY>"
+        }
+    ],
+    "storefrontAddons": [
+        {
+            "addon": "promotionenginesamplesaddon",
+            "storefront": "yacceleratorstorefront",
+            "template": "yacceleratorstorefront"
+        },
+        {
+            "addon": "customerticketingaddon",
+            "storefront": "yacceleratorstorefront",
+            "template": "yacceleratorstorefront"
+        },
+        {
+            "addon": "ordermanagementaddon",
+            "storefront": "yacceleratorstorefront",
+            "template": "yacceleratorstorefront"
+        },
+        {
+            "addon": "orderselfserviceaddon",
+            "storefront": "yacceleratorstorefront",
+            "template": "yacceleratorstorefront"
+        },
+        {
+            "addon": "consignmenttrackingaddon",
+            "storefront": "yacceleratorstorefront",
+            "template": "yacceleratorstorefront"
+        },
+        {
+            "addon": "adaptivesearchsamplesaddon",
+            "storefront": "yacceleratorstorefront",
+            "template": "yacceleratorstorefront"
+        },
+        {
+            "addon": "pcmbackofficesamplesaddon",
+            "storefront": "yacceleratorstorefront",
+            "template": "yacceleratorstorefront"
+        },        
+        {
+            "addon": "commerceorgsamplesaddon",
+            "storefront": "yacceleratorstorefront",
+            "template": "yacceleratorstorefront"
+        },        
+        {
+            "addon": "assistedservicestorefront",
+            "storefront": "yacceleratorstorefront",
+            "template": "yacceleratorstorefront"
+        },
+        {
+            "addon": "smarteditaddon",
+            "storefront": "yacceleratorstorefront",
+            "template": "yacceleratorstorefront"
+        }
+    ],    
          "aspects": [
         {
             "name": "backoffice",
@@ -20,7 +165,7 @@
                 },
                 {
                     "name": "backoffice",
-                    "contextPath": ""
+                    "contextPath": "/backoffice"
                 }
             ]
         },
