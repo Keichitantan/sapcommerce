@@ -42,7 +42,17 @@
         "odata2webservices",
         "odata2webservicesfeaturetests",
         "kymaintegrationbackoffice",
-        "kymaintegrationsampledata"
+        "kymaintegrationsampledata",
+    	"cmsbackoffice',
+        'cmssmartedit',
+        'cmssmarteditwebservices',
+        'cmswebservices',
+        'permissionswebservices',
+        'previewwebservices',
+        'smartedit',
+        'smarteditaddon',
+        'smarteditwebservices',
+        'ysmarteditmodule'	    
     ],
    "useConfig": {
         "solr": {
