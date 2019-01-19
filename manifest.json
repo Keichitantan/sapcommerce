@@ -52,7 +52,8 @@
         "smartedit",
         "smarteditaddon",
         "smarteditwebservices",
-        "ysmarteditmodule"	    
+        "ysmarteditmodule",
+	"azurecloudhotfolder"
     ],
    "useConfig": {
         "solr": {
@@ -107,7 +108,55 @@
         {
             "key": "google.api.key",
             "value": "<GOOGLE_API_KEY>"
-        }
+        },
+        {
+            "key": "azure.hotfolder.storage.account.connection-string",
+            "value": ""
+        },
+        {
+            "key": "azure.hotfolder.storage.container.name",
+            "value": "hybris"
+        },
+        {
+            "key": "azure.hotfolder.storage.container.hotfolder",
+            "value": ""
+        },
+        {
+            "key": "azure.hotfolder.storage.container.match.pattern",
+            "value": ""
+        },
+        {
+            "key": "azure.hotfolder.storage.polling.fixed.rate",
+            "value": "60000"
+        },
+        {
+            "key": "azure.hotfolder.storage.delete.remote.files",
+            "value": "false"
+        },
+        {
+            "key": "azure.hotfolder.storage.account.name",
+            "value": ""
+        },
+        {
+            "key": "cloud.hotfolder.storage.file.sort.name.prefix.priority",
+            "value": "coredata,sampledata,product,url_media"
+        },
+        {
+            "key": "cloud.hotfolder-storage.file.sort.name.sequence",
+            "value": "<^(?:\\D*)-(\\d+)\\.*>"
+        },	
+        {
+            "key": "cloud.hotfolder.default.mapping.root.dir",
+            "value": "electronics"
+        },
+        {
+            "key": "cloud.hotfolder.default.mapping.header.catalog",
+            "value": "electronicsProductCatalog"
+        },
+        {
+            "key": "cloud.hotfolder.default.mapping.header.net",
+            "value": "true"
+        },	    
     ],
     "storefrontAddons": [
         {
@@ -198,7 +247,12 @@
         },
         {
             "name": "backgroundProcessing",
-            "properties": [],
+            "properties": [
+	       {
+                    "key": "cluster.node.groups",
+                    "value": "integration,yHotfolderCandidate"
+                }  
+	    ],
             "webapps": [
                 {
                     "name": "hac",
