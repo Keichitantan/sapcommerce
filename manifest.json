@@ -237,7 +237,7 @@
                 },
                 {
                     "name": "yacceleratorstorefront",
-                    "contextPath": "/"
+                    "contextPath": ""
                 },
                 {
                     "name": "acceleratorservices",
