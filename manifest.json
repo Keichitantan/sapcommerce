@@ -110,20 +110,16 @@
             "value": "<GOOGLE_API_KEY>"
         },
         {
-            "key": "azure.hotfolder.storage.account.connection-string",
-            "value": ""
-        },
-        {
             "key": "azure.hotfolder.storage.container.name",
             "value": "hybris"
         },
         {
             "key": "azure.hotfolder.storage.container.hotfolder",
-            "value": ""
+            "value": "<${tenantId}/hotfolder → master/hotfolder>"
         },
         {
             "key": "azure.hotfolder.storage.container.match.pattern",
-            "value": ""
+            "value": "<^((?!ignore).)*$>"
         },
         {
             "key": "azure.hotfolder.storage.polling.fixed.rate",
@@ -135,7 +131,7 @@
         },
         {
             "key": "azure.hotfolder.storage.account.name",
-            "value": ""
+            "value": "mgipk3bjvi4ioir3hcivafy"
         },
         {
             "key": "cloud.hotfolder.storage.file.sort.name.prefix.priority",
@@ -156,7 +152,7 @@
         {
             "key": "cloud.hotfolder.default.mapping.header.net",
             "value": "true"
-        },	    
+        }    
     ],
     "storefrontAddons": [
         {
