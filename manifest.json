@@ -152,7 +152,16 @@
         {
             "key": "cloud.hotfolder.default.mapping.header.net",
             "value": "true"
-        }    
+        },
+        {
+            "key": "yacceleratorstorefront.webroot",
+            "value": ""
+        },
+        {
+            "key": "storefrontContextRoot",
+            "value": ""
+        }	    
+	    
     ],
     "storefrontAddons": [
         {
