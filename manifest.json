@@ -221,10 +221,6 @@
                 {
                     "name": "backoffice",
                     "contextPath": "/backoffice"
-                },
-                {
-                    "name": "smartedit",
-                    "contextPath": "/smartedit"
                 }		    
             ]
         },
@@ -256,12 +252,16 @@
             "webapps": [
                 {
                     "name": "hac",
-                    "contextPath": ""
+                    "contextPath": "/hac"
                 },
                 {
                     "name": "mediaweb",
                     "contextPath": "/medias"
-                }
+                },
+                {
+                    "name": "smartedit",
+                    "contextPath": "/smartedit"
+                }		    
             ]
         }
     ]
