@@ -13,7 +13,6 @@
         "commerceservicesbackoffice",
         "solrfacetsearchbackoffice",
         "solrserver",
-        "yacceleratorordermanagement",
         "FlexiB2Cbackoffice",
         "FlexiB2Ccore",	    
         "FlexiB2Cfacades",
@@ -155,7 +154,7 @@
             "value": "true"
         },
         {
-            "key": "yacceleratorstorefront.webroot",
+            "key": "FlexiB2Cstorefront.webroot",
             "value": ""
         },
         {
@@ -169,7 +168,11 @@
         {
             "key": "website.flexi.https",
             "value": "https://accstorefront.c2yi-servicios1-d1-public.model-t.cc.commerce.ondemand.com"
-        }	    	    
+        },
+        {
+            "key": "keygen.order.code.start",
+            "value": "0890000000"
+        }	    
     ],
     "storefrontAddons": [
         {
@@ -253,7 +256,7 @@
                     "contextPath": "/medias"
                 },
                 {
-                    "name": "yacceleratorstorefront",
+                    "name": "FlexiB2Cstorefront",
                     "contextPath": ""
                 },
                 {
