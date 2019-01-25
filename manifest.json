@@ -13,15 +13,16 @@
         "commerceservicesbackoffice",
         "solrfacetsearchbackoffice",
         "solrserver",
-        "yacceleratorbackoffice",
-        "yacceleratorinitialdata",
         "yacceleratorordermanagement",
-        "yacceleratorstorefront",
+        "FlexiB2Cbackoffice",
+        "FlexiB2Ccore",	    
+        "FlexiB2Cfacades",
+	"FlexiB2Cfulfilmentprocess",
+	"FlexiB2Cinitialdata",
+	"FlexiB2Cstorefront",    
         "yaddon",
         "ycommercewebservices",
         "cmsoccaddon",
-        "electronicsstore",
-        "apparelstore",
         "acceleratorwebservicesaddon",
         "assistedservicestorefront",
         "assistedservicewebservices",
@@ -143,11 +144,11 @@
         },	
         {
             "key": "cloud.hotfolder.default.mapping.root.dir",
-            "value": "electronics"
+            "value": "flexi"
         },
         {
             "key": "cloud.hotfolder.default.mapping.header.catalog",
-            "value": "electronicsProductCatalog"
+            "value": "flexiProductCatalog"
         },
         {
             "key": "cloud.hotfolder.default.mapping.header.net",
@@ -160,8 +161,15 @@
         {
             "key": "storefrontContextRoot",
             "value": ""
-        }	    
-	    
+        },
+        {
+            "key": "website.flexi.http",
+            "value": "http://accstorefront.c2yi-servicios1-d1-public.model-t.cc.commerce.ondemand.com"
+        },
+        {
+            "key": "website.flexi.https",
+            "value": "https://accstorefront.c2yi-servicios1-d1-public.model-t.cc.commerce.ondemand.com"
+        }	    	    
     ],
     "storefrontAddons": [
         {
