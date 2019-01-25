@@ -160,6 +160,22 @@
         {
             "key": "storefrontContextRoot",
             "value": ""
+        },
+        {
+            "key": "website.electronics.http",
+            "value": "http://accstorefront.c2yi-servicios1-d1-public.model-t.cc.commerce.ondemand.com"
+        },
+        {
+            "key": "website.electronics.https",
+            "value": "https://accstorefront.c2yi-servicios1-d1-public.model-t.cc.commerce.ondemand.com"
+        },
+        {
+            "key": "website.apparel-uk.http",
+            "value": "http://accstorefront2.c2yi-servicios1-d1-public.model-t.cc.commerce.ondemand.com"
+        },    
+        {
+            "key": "website.apparel-uk.https",
+            "value": "https://accstorefront2.c2yi-servicios1-d1-public.model-t.cc.commerce.ondemand.com"
         }	    
 	    
     ],
