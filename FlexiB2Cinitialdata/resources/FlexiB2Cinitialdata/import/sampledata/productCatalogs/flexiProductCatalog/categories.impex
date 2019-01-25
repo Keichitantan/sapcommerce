@@ -1,0 +1,99 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+# ImpEx for Importing Categories into Apparel Store
+
+# Macros / Replacement Parameter definitions
+$catalogVersion=catalogVersion(catalog(id[default='flexiProductCatalog']),version[default='Staged'])[unique=true,default='flexiProductCatalog:Staged']
+$categories=target(code, $catalogVersion)[unique=true]
+$supercategories=source(code, $catalogVersion)[unique=true]
+
+# Create Categories
+$productCatalog=flexiProductCatalog
+$productCatalogName=Flexi Product Catalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$lang=es_MX
+
+
+#PASO - 1 - INSERT CATEGORIAS
+INSERT_UPDATE Category;code[unique=true];name[lang=$lang];$catalogVersion
+
+#FAMILIA
+;Dama;Dama;
+;Caballero;Caballero;
+;Ninos;Niños;
+;Ofertas;Ofertas;
+
+#TIPO
+;Dama_Botas;Botas;
+;Dama_Botines;Botines;
+;Dama_Tacones;Tacones;
+;Dama_Sneakers;Sneakers;
+;Dama_Flats;Flats;
+;Dama_Mocasines;Mocasines;
+;Dama_Sandalias;Sandalias;
+;Dama_Casual;Casual;
+;Dama_Confort;Confort;
+;Dama_Flexi_Country;Flexi Country;
+;Dama_Plataformas;Plataformas;
+;Dama_De_Vestir;De Vestir;
+;Dama_Servicio_Clinico;Servicio / Clínico;
+;Dama_Escolar_Universitario ;Escolar / Universitario ;
+;Dama_Trendy;Trendy;
+;Caballero_Botas_y_Botines;Botas y Botines;
+;Caballero_Sneakers;Sneakers;
+;Caballero_Mocasines;Mocasines;
+;Caballero_Sandalias;Sandalias;
+;Caballero_Casual;Casual;
+;Caballero_Flexi_Country;Flexi Country;
+;Caballero_De_Vestir;De Vestir;
+;Caballero_Servicio_Clinico;Servicio / Clínico;
+;Caballero_Escolar_Universitario;Escolar / Universitario ;
+;Caballero_Trendy;Trendy;
+;Ninos_Nino;Niño;
+;Ninos_Nina;Niña;
+;Ofertas_Promociones;Promociones;
+;Ofertas_Outlet;Outlet;
+;Ofertas_Ultimos_pares;Últimos pares;
+
+#PASO - 2 - 
+#INSERT CATEGPORY STRUCTURE
+INSERT_UPDATE CategoryCategoryRelation;$categories;$supercategories
+;Dama_Botas;Dama;
+;Dama_Botines;Dama;
+;Dama_Tacones;Dama;
+;Dama_Sneakers;Dama;
+;Dama_Flats;Dama;
+;Dama_Mocasines;Dama;
+;Dama_Sandalias;Dama;
+;Dama_Casual;Dama;
+;Dama_Confort;Dama;
+;Dama_Flexi_Country;Dama;
+;Dama_Plataformas;Dama;
+;Dama_De_Vestir;Dama;
+;Dama_Servicio_Clinico;Dama;
+;Dama_Escolar_Universitario ;Dama;
+;Dama_Trendy;Dama;
+;Caballero_Botas_y_Botines;Caballero;
+;Caballero_Sneakers;Caballero;
+;Caballero_Mocasines;Caballero;
+;Caballero_Sandalias;Caballero;
+;Caballero_Casual;Caballero;
+;Caballero_Flexi_Country;Caballero;
+;Caballero_De_Vestir;Caballero;
+;Caballero_Servicio_Clinico;Caballero;
+;Caballero_Escolar_Universitario;Caballero;
+;Caballero_Trendy;Caballero;
+;Ninos_Nino;Ninos;
+;Ninos_Nina;Ninos;
+;Ofertas_Promociones;Ofertas;
+;Ofertas_Outlet;Ofertas;
+;Ofertas_Ultimos_pares;Ofertas;
+

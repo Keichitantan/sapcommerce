@@ -1,0 +1,38 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+#
+#
+$productCatalog=flexiProductCatalog
+$currencies=MXN
+$net=false
+$storeUid=flexi
+$defaultCurrency=MXN
+$languages=es_MX
+$defaultLanguage=es_MX
+$deliveryCountries=MX
+$orderProcessCode=order-process
+$pickupInStoreMode=BUY_AND_COLLECT
+$paymentProvider=Mockup
+$expressCheckoutEnabled=true
+$returnProcessCode=return-process
+$promoGrp=flexiPromoGrp
+
+INSERT_UPDATE PromotionGroup;Identifier[unique=true];
+;$promoGrp;
+
+# Base Store
+INSERT_UPDATE BaseStore;uid[unique=true];catalogs(id);currencies(isocode);net;taxGroup(code);storelocatorDistanceUnit(code);defaultCurrency(isocode);languages(isocode);defaultLanguage(isocode);deliveryCountries(isocode);submitOrderProcessCode;pickupInStoreMode(code);paymentProvider;expressCheckoutEnabled;maxRadiusForPoSSearch;checkoutFlowGroup;createReturnProcessCode;warehouses(code)
+;$storeUid;$productCatalog;$currencies;$net;MX-MWST-1;km;$defaultCurrency;$languages;$defaultLanguage;$deliveryCountries;$orderProcessCode;$pickupInStoreMode;$paymentProvider;$expressCheckoutEnabled;300;apparelCheckoutGroup;$returnProcessCode;0700
+
+INSERT_UPDATE BaseStore2DeliveryModeRel;source(uid)[unique=true];target(code)[unique=true]
+;flexi;premium-net
+;flexi;standard-net
+;flexi;free-standard-shipping

@@ -1,0 +1,109 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+#
+# Import essential data for the Accelerator
+#
+
+# Language
+$lang=es
+
+# Languages
+UPDATE Language;isocode[unique=true];name[lang=$lang]
+ ;en;"Inglés"
+ ;es;"Español"
+ ;es_MX;"Español México"
+
+# Currencies
+UPDATE Currency;isocode[unique=true];name[lang=$lang]
+ ;USD;"Dollar"
+ ;MXN;"Pesos Mexicanos"
+ 
+# Titles
+UPDATE Title;code[unique=true];name[lang=$lang]
+ ;dr;"Dr."
+ ;miss;"Miss"
+ ;mr;"Mr."
+ ;mrs;"Mrs."
+ ;ms;"Ms."
+ ;rev;"Rev."
+ ;0001;"Señora"
+ ;0002;"Señor"
+ ;0003;"Empresa"
+ ;0004;"Señor y señora"
+
+# Credit / Debit Cards
+UPDATE CreditCardType;code[unique=true];name[lang=$lang]
+ ;amex;"American Express"
+ ;diners;"Diner's Club"
+ ;maestro;"Maestro"
+ ;master;"Mastercard"
+ ;mastercard_eurocard;"Mastercard/Eurocard"
+ ;switch;"Switch"
+ ;visa;"Visa"
+
+# DistanceUnits for Storelocator 
+UPDATE DistanceUnit;code[unique=true];name[lang=$lang]
+ ;km;"km"
+ ;miles;"millas"
+
+# MediaFormats
+UPDATE MediaFormat;qualifier[unique=true];name[lang=$lang];
+ ;1200Wx1200H;"1200Wx1200H"
+ ;300Wx300H;"300Wx300H"
+ ;30Wx30H;"30Wx30H"
+ ;365Wx246H;"365Wx246H"
+ ;515Wx515H;"515Wx515H"
+ ;65Wx65H;"65Wx65H"
+ ;96Wx96H;"96Wx96H"
+
+# Product Tax Groups
+UPDATE ProductTaxGroup;code[unique=true];name[lang=$lang]
+ ;us-sales-tax-full;"US Sales Tax"
+ ;MX-MWST-0;"MX IVA repercutido Ningún impuesto"
+ ;MX-MWST-1;"MX IVA repercutido Impuesto completo"
+ ;MX-MWST-2;"MX IVA repercutido Mitad del impuesto"
+ ;MX-MWST-3;"MX IVA repercutido Tasa de imp. mínima"
+ ;MX-MWST-4;"MX IVA repercutido Impuestos mixtos"
+ ;MX-MWST-5;"MX IVA repercutido Exento de impuestos"
+ ;MX-MWST-6;"MX IVA repercutido"
+ ;MX-MWST-7;"MX IVA repercutido IVA Adicional 1%" 
+
+# User Tax Groups
+UPDATE UserTaxGroup;code[unique=true];name[lang=$lang]
+ ;us-taxes;"Impuesto Estados Unidos"
+ ;mxn-taxes;"Impuesto Mexicano"
+ 
+# Tax
+UPDATE Tax;code[unique=true];name[lang=$lang]
+ ;us-sales-tax-full;"Sales Tax"
+ ;MX-MWST-0;"MX IVA repercutido Ningún impuesto"
+ ;MX-MWST-1;"MX IVA repercutido Impuesto completo"
+ ;MX-MWST-2;"MX IVA repercutido Mitad del impuesto"
+ ;MX-MWST-3;"MX IVA repercutido Tasa de imp. mínima"
+ ;MX-MWST-4;"MX IVA repercutido Impuestos mixtos"
+ ;MX-MWST-5;"MX IVA repercutido Exento de impuestos"
+ ;MX-MWST-6;"MX IVA repercutido"
+ ;MX-MWST-7;"MX IVA repercutido IVA Adicional 1%" 
+
+# Consginment statuses
+UPDATE ConsignmentStatus;code[unique=true];name[lang=$lang]
+ ;CANCELLED;"Cancelado"
+ ;PICKPACK;"Pickpack"
+ ;PICKUP_COMPLETE;"Pickup complete"
+ ;READY;"Listo"
+ ;READY_FOR_PICKUP;"Ready for pickup"
+ ;SHIPPED;"Enviado"
+ ;WAITING;"En espera"
+ 
+ # Unit
+ INSERT_UPDATE Unit;code[unique=true];unitType;conversion;name[lang=$lang]
+;PCE;SAP-AAAADL;1;Unidad
+;PR;SAP-AAAADL;1;Par

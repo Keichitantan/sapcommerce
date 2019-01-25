@@ -1,0 +1,37 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+#
+# Import Sample CMS Cockpit User
+#
+
+$defaultPassword=1234
+
+# Impexing previewmanagergroup as previewwebservices might not be impexed by the time this file is executed and the user impex uploads might fail
+INSERT_UPDATE UserGroup;UID[unique=true];groups(uid)[mode=append]
+;previewmanagergroup;employeegroup
+
+INSERT_UPDATE UserGroup;UID[unique=true];groups(uid)[mode=append]
+;cmsmanagergroup;cockpitgroup,employeegroup
+;flexi-cmsmanagergroup;employeegroup
+;flexi-cmsreadergroup;employeegroup
+
+INSERT_UPDATE PrincipalGroupRelation;source(uid)[unique=true];target(uid)[unique=true]
+;flexi-cmsmanagergroup;basecmsmanagergroup;
+;flexi-cmsreadergroup;basecmsmanagergroup;
+
+INSERT_UPDATE Employee;UID[unique=true];password[default=$defaultPassword];description;name;groups(uid)[mode=append];sessionLanguage(isocode);sessionCurrency(isocode)
+;cmsmanager;;CMS manager;CMS Manager;cmsmanagergroup;en;USD
+;cmsmanager-flexi;;CMS manager Apparel DE;CMS Manager Apparel DE;flexi-cmsmanagergroup,previewmanagergroup,cockpitgroup;en;USD
+;cmsreader-apparel;;CMS Reader Apparel;CMS Reader Apparel;flexi-cmsreadergroup,previewmanagergroup,cockpitgroup;en;USD
+
+UPDATE CatalogVersion;catalog(id)[unique=true];version[unique=true];writePrincipals(uid)[mode=append];readPrincipals(uid)[mode=append];
+;flexiContentCatalog;Staged;cmsmanagergroup,flexi-cmsmanagergroup;flexi-cmsreadergroup
+;flexiContentCatalog;Online;;cmsmanagergroup,flexi-cmsmanagergroup,flexi-cmsreadergroup
