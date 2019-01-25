@@ -174,52 +174,52 @@
     "storefrontAddons": [
         {
             "addon": "promotionenginesamplesaddon",
-            "storefront": "yacceleratorstorefront",
+            "storefront": "FlexiB2Cstorefront",
             "template": "yacceleratorstorefront"
         },
         {
             "addon": "customerticketingaddon",
-            "storefront": "yacceleratorstorefront",
+            "storefront": "FlexiB2Cstorefront",
             "template": "yacceleratorstorefront"
         },
         {
             "addon": "ordermanagementaddon",
-            "storefront": "yacceleratorstorefront",
+            "storefront": "FlexiB2Cstorefront",
             "template": "yacceleratorstorefront"
         },
         {
             "addon": "orderselfserviceaddon",
-            "storefront": "yacceleratorstorefront",
+            "storefront": "FlexiB2Cstorefront",
             "template": "yacceleratorstorefront"
         },
         {
             "addon": "consignmenttrackingaddon",
-            "storefront": "yacceleratorstorefront",
+            "storefront": "FlexiB2Cstorefront",
             "template": "yacceleratorstorefront"
         },
         {
             "addon": "adaptivesearchsamplesaddon",
-            "storefront": "yacceleratorstorefront",
+            "storefront": "FlexiB2Cstorefront",
             "template": "yacceleratorstorefront"
         },
         {
             "addon": "pcmbackofficesamplesaddon",
-            "storefront": "yacceleratorstorefront",
+            "storefront": "FlexiB2Cstorefront",
             "template": "yacceleratorstorefront"
         },        
         {
             "addon": "commerceorgsamplesaddon",
-            "storefront": "yacceleratorstorefront",
+            "storefront": "FlexiB2Cstorefront",
             "template": "yacceleratorstorefront"
         },        
         {
             "addon": "assistedservicestorefront",
-            "storefront": "yacceleratorstorefront",
+            "storefront": "FlexiB2Cstorefront",
             "template": "yacceleratorstorefront"
         },
         {
             "addon": "smarteditaddon",
-            "storefront": "yacceleratorstorefront",
+            "storefront": "FlexiB2Cstorefront",
             "template": "yacceleratorstorefront"
         }
     ],    
