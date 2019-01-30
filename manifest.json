@@ -200,6 +200,13 @@
 	{
 	    "key":"xss.filter.header.X-Frame-Options",
 	    "value":""
+        },
+        {
+
+            "key": "lang.packs",
+
+            "value": "es_MX,en"
+
         }	    
     ],
     "storefrontAddons": [
