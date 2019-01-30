@@ -115,7 +115,7 @@
         },
         {
             "key": "azure.hotfolder.storage.container.hotfolder",
-            "value": "<${tenantId}/hotfolder → master/hotfolder>"
+            "value": "${tenantId}/hotfolder"
         },
         {
             "key": "azure.hotfolder.storage.container.match.pattern",
@@ -132,14 +132,6 @@
         {
             "key": "azure.hotfolder.storage.account.name",
             "value": "mgipk3bjvi4ioir3hcivafy"
-        },
-        {
-            "key": "cloud.hotfolder.storage.file.sort.name.prefix.priority",
-            "value": "coredata,sampledata,product,url_media"
-        },
-        {
-            "key": "cloud.hotfolder-storage.file.sort.name.sequence",
-            "value": "<^(?:\\D*)-(\\d+)\\.*>"
         },	
         {
             "key": "cloud.hotfolder.default.mapping.root.dir",
@@ -152,6 +144,38 @@
         {
             "key": "cloud.hotfolder.default.mapping.header.net",
             "value": "true"
+        },	    
+        {
+            "key": "cloud.hotfolder.default.mapping.file.name.pattern",
+            "value": "^(customer|product|url_media)-\\d+.*"
+        },
+        {
+            "key": "cloud.hotfolder.storage.file.sort.name.prefix.priority",
+            "value": "coredata,sampledata,product,url_media"
+        },
+        {
+            "key": "cloud.hotfolder-storage.file.sort.name.sequence",
+            "value": "<^(?:\\D*)-(\\d+)\\.*>"
+        },	    
+        {
+            "key": "cloud.hotfolder.default.zip.header.catalog",
+            "value": "flexiProductCatalog"
+        },	    
+        {
+            "key": "cloud.hotfolder.default.zip.header.net",
+            "value": "false"
+        },
+        {
+            "key": "cloud.hotfolder.default.zip.mapping.product.catalog",
+            "value": "flexi"
+        },	    
+        {
+            "key": "cloud.hotfolder.default.zip.mapping.content.catalogs",
+            "value": "flexi"
+        },	    
+        {
+            "key": "cloud.hotfolder.default.zip.mapping.store.names",
+            "value": "flexi"
         },
         {
             "key": "FlexiB2Cstorefront.webroot",
@@ -172,6 +196,10 @@
         {
             "key": "keygen.order.code.start",
             "value": "0890000000"
+        },
+	{
+	    "key":"xss.filter.header.X-Frame-Options",
+	    "value":""
         }	    
     ],
     "storefrontAddons": [
@@ -245,7 +273,11 @@
                 {
                     "name": "smartedit",
                     "contextPath": "/smartedit"
-                }
+                },
+                {
+                    "name": "FlexiB2Cstorefront",
+                    "contextPath": ""
+                }		    
             ]
         },
         {
