@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:file="http://www.springframework.org/schema/integration/file"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/integration 
+	http://www.springframework.org/schema/integration/spring-integration.xsd
+	http://www.springframework.org/schema/integration/file 
+	http://www.springframework.org/schema/integration/file/spring-integration-file.xsd
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/> 
+
+	<bean id="baseDirectoryFlexi" class="java.lang.String">
+		<constructor-arg value="#{baseDirectory}/${tenantId}/flexi" />
+	</bean>
+	<!-- 1) Scan for files -->
+	<file:inbound-channel-adapter id="batchFilesFlexi" directory="#{baseDirectoryFlexi}"
+		filename-regex="^(.*)-(\d+)\.csv" comparator="fileOrderComparator">
+		<int:poller fixed-rate="1000" />
+	</file:inbound-channel-adapter>
+	
+	<!-- 2) move the file to processing and create header -->
+	<file:outbound-gateway request-channel="batchFilesFlexi" reply-channel="batchFilesFlexiProc"
+		directory="#{baseDirectoryFlexi}/processing" delete-source-files="true" />
+	<int:service-activator input-channel="batchFilesFlexiProc" output-channel="batchFilesHeaderInit" ref="flexiHeaderSetupTask"
+		method="execute" />
+	<bean id="flexiHeaderSetupTask" class="de.hybris.platform.acceleratorservices.dataimport.batch.task.HeaderSetupTask">
+		<property name="catalog" value="flexiProductCatalog" />
+		<property name="net" value="false" />
+		<property name="storeBaseDirectory" ref="baseDirectoryFlexi" />
+	</bean>
+	
+	<!-- Transformer converters mappings -->
+	<bean id="batchFlexiProductConverterMapping" 
+		  class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping" 
+		  p:mapping="flexi_product" 
+		  p:converter-ref="batchFlexiProductConverter"/>
+	
+	<bean id="batchFlexiColorProductConverterMapping" 
+		  class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping" 
+		  p:mapping="flexi_product" 
+		  p:converter-ref="batchFlexiStyleVariantConverter"/>
+		  
+	<bean id="batchFlexiTallaProductConverterMapping"			
+		  class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping" 
+		  p:mapping="flexi_product" 
+		  p:converter-ref="batchFlexiSizeVariantConverter"/>
+		  
+	<bean id="batchFlexiPriceConverterMapping" 
+		  class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping" 
+		  p:mapping="flexi_price" 
+		  p:converter-ref="batchFlexiPriceConverter"/>
+	
+	<bean id="batchFlexiStockConverterMapping" 
+		  class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping" 
+		  p:mapping="flexi_stock" 
+		  p:converter-ref="batchFlexiStockConverter"/>
+		  
+	<bean id="batchFlexiEstadoPedidoConverterMapping" 
+		  class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping" 
+		  p:mapping="flexi_estado_pedido" 
+		  p:converter-ref="batchFlexiEstadoPedidoConverter"/>
+	
+
+	<!-- Apparel specific converters -->
+	<bean id="batchFlexiProductConverter" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+		<property name="header">
+			<value>#{defaultImpexProductHeader}
+				# Insert Products
+				$productCatalog=flexiProductCatalog
+				$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+				$lang=es_MX
+				$varianttype=varianttype(code)[default='ApparelStyleVariantProduct']
+				$approvalstatus=approvalstatus(code)[default='approved']
+				INSERT_UPDATE Product;code[unique=true];name[lang=$lang];description[lang=$lang];$catalogVersion;$varianttype;$approvalstatus
+			</value>
+		</property>
+		<property name="impexRow">
+			<value>;{+0};{1};{2}</value>
+		</property>
+	</bean>
+	<bean id="batchFlexiStyleVariantConverter" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+		<property name="header">
+			<value>#{defaultImpexProductHeader}
+				$productCatalog=flexiProductCatalog
+				$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+				$baseProduct=baseProduct(code, catalogVersion(catalog(id[default='$productCatalog']),version[default='Staged']))
+				$lang=es_MX
+				$varianttype=varianttype(code)[default='ApparelSizeVariantProduct']
+				$approvalstatus=approvalstatus(code)[default='approved']
+				# Insert style variant specific data
+				INSERT_UPDATE ApparelStyleVariantProduct;$baseProduct;code[unique=true];name[lang=$lang];description[lang=$lang];$catalogVersion;$varianttype;$approvalstatus
+			</value>
+		</property>
+		<property name="impexRow">
+			<value>;{+0};{+3};{4};{5}</value>
+		</property>
+	</bean>
+	<bean id="batchFlexiSizeVariantConverter" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+		<property name="header">
+			<value>#{defaultImpexProductHeader}
+				$productCatalog=flexiProductCatalog
+				$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+				$baseProduct=baseProduct(code, catalogVersion(catalog(id[default='$productCatalog']),version[default='Staged']))
+				$lang=es_MX
+				$approvalstatus=approvalstatus(code)[default='approved']
+				# Insert size variant specific data
+				INSERT_UPDATE ApparelSizeVariantProduct;$baseProduct;code[unique=true];name[lang=$lang];description[lang=$lang];$catalogVersion;$approvalstatus
+			</value>
+		</property>
+		<property name="impexRow">
+			<value>;{+3};{+6};{7};{8}</value>
+		</property>
+	</bean>
+	<bean id="batchFlexiPriceConverter" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+		<property name="header">
+			<value>#{defaultImpexProductHeader}
+				# Insert Price
+				INSERT_UPDATE PriceRow;productId[unique=true];price;currency(isocode)[unique=true];unit(code[unique=true])
+			</value>
+		</property>
+		<property name="impexRow">
+			<value>;{+0};{1};{+2};{3}</value>
+		</property>
+	</bean>
+	<bean id="batchFlexiStockConverter" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+		<property name="header">
+			<value>#{defaultImpexProductHeader}
+				# Insert Stock
+				INSERT_UPDATE StockLevel;productCode[unique=true];available[unique=true];warehouse(code)[unique=true];inStockStatus(code)
+			</value>
+		</property>
+		<property name="impexRow">
+			<value>;{+0};{1};{+2};{3}</value>
+		</property>
+	</bean>
+	<bean id="batchFlexiEstadoPedidoConverter" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+		<property name="header">
+			<value>#{defaultImpexProductHeader}
+				# Insert Stock
+				UPDATE Order;code(unique=true);status
+			</value>
+		</property>
+		<property name="impexRow">
+			<value>;{+0};{1}</value>
+		</property>
+	</bean>
+</beans>

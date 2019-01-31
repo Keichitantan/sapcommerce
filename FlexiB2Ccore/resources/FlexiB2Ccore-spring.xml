@@ -24,6 +24,8 @@
 	<import resource="classpath:/FlexiB2Ccore/integration/hot-folder-store-electronics-spring.xml"/>
 	<import resource="classpath:/FlexiB2Ccore/integration/hot-folder-store-apparel-spring.xml"/>
 	<import resource="classpath:/FlexiB2Ccore/integration/hot-folder-common-spring.xml"/>
+	<import resource="classpath:/FlexiB2Ccore/integration/hot-folder-store-flexi-spring.xml"/>
+	
 
 	<!-- SystemSetup for the FlexiB2CCore -->
 	<bean id="acceleratorCoreSystemSetup" class="mx.flexi.core.setup.CoreSystemSetup"
