@@ -281,6 +281,30 @@
                     "name": "smartedit",
                     "contextPath": "/smartedit"
                 },
+		{
+		    "name": "cmssmartedit",
+		    "contextPath": "/cmssmartedit"
+		},
+		{
+	 	    "name": "smarteditwebservices",
+		    "contextPath": "/smarteditwebservices"
+		},
+		{
+		    "name": "cmssmarteditwebservices",
+		    "contextPath": "/cmssmarteditwebservices"
+		},
+		{
+		    "name": "personalizationsmartedit",
+		    "contextPath": "/personalizationsmartedit"
+		},
+		{
+		    "name": "personalizationpromotionssmartedit",
+		    "contextPath": "/personalizationpromotionssmartedit"
+		},
+		{
+		    "name": "personalizationsearchsmartedit",
+		    "contextPath": "/personalizationsearchsmartedit"
+		},  
                 {
                     "name": "FlexiB2Cstorefront",
                     "contextPath": ""
