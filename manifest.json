@@ -127,7 +127,7 @@
         },
         {
             "key": "azure.hotfolder.storage.delete.remote.files",
-            "value": "false"
+            "value": "true"
         },
         {
             "key": "azure.hotfolder.storage.account.name",
