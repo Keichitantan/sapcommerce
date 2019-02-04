@@ -147,7 +147,7 @@
         },	    
         {
             "key": "cloud.hotfolder.default.mapping.file.name.pattern",
-            "value": "^(customer|product|url_media)-\\d+.*"
+            "value": "^(customer|product|url_media|flexi_product)-\\d+.*"
         },
         {
             "key": "cloud.hotfolder.storage.file.sort.name.prefix.priority",
@@ -202,11 +202,8 @@
 	    "value":""
         },
         {
-
             "key": "lang.packs",
-
             "value": "es_MX,en"
-
         }	    
     ],
     "storefrontAddons": [
@@ -308,7 +305,11 @@
                 {
                     "name": "FlexiB2Cstorefront",
                     "contextPath": ""
-                }		    
+                },
+		{
+		    "name": "oauth2",
+		    "contextPath": "/authorizationserver"
+		}		    
             ]
         },
         {
