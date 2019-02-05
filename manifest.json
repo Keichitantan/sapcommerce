@@ -291,6 +291,22 @@
 		    "contextPath": "/cmssmarteditwebservices"
 		},
 		{
+		    "name": "ysmarteditmodule",
+		    "contextPath": "/ysmarteditmodule"			
+		},
+		{
+		    "name": "cmswebservices",
+		    "contextPath": "/cmswebservices"			
+		},
+                {
+                    "name": "previewwebservices",
+                    "contextPath": "/previewwebservices"
+                },		    
+                {
+                    "name": "permissionswebservices",
+                    "contextPath": "/permissionswebservices"
+                },		    
+		{
 		    "name": "personalizationsmartedit",
 		    "contextPath": "/personalizationsmartedit"
 		},
