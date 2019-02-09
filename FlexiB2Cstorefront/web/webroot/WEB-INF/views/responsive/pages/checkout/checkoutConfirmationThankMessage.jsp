@@ -12,20 +12,33 @@
 
 <div class="checkout-success">
 	<div class="checkout-success__body">
-		<div class="checkout-success__body__headline">
-			<spring:theme code="checkout.orderConfirmation.thankYouForOrder" />
-		</div>
-		<p><spring:theme code="text.account.order.orderNumberLabel"/><b> ${fn:escapeXml(orderData.code)}</b></p>
-		<p><spring:theme code="checkout.orderConfirmation.copySentToShort"/><b> ${fn:escapeXml(email)}</b></p>
+	    <div class="row">
+	        <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-2 col-md-3 col-md-offset-3 col-lg-2 col-lg-offset-4">
+	            <img class="text-center img-checkout" width="90%" alt="Facebook" src="${commonResourcePath}/images/iconos/WEB/UI icons/compra_exitosa.png">
+            </div>
+            <div class="col-xs-10 col-xs-offset-1 col-sm-5 col-md-4 col-lg-3 col-sm-offset-0 text-left text-checkout">
+                <p><b><spring:theme code="checkout.orderConfirmation.successesp" /></b></p>
+                <p><b><spring:theme code="checkout.orderConfirmation.ordernumberesp"/>&nbsp ${fn:escapeXml(orderData.code)}</b></p>
+                <p><b><spring:theme code="checkout.orderConfirmation.orderdesc"/></b>&nbsp ${fn:escapeXml(allItems[0].product.name)}</p>
+                <p><b><spring:theme code="checkout.orderConfirmation.reference"/></b>&nbsp ${fn:escapeXml(paymentInfo.reference)}</p>
+                <p><b><spring:theme code="checkout.orderConfirmation.qty"/></b>&nbsp ${fn:escapeXml(orderData.totalUnitCount)}</p>
+                <p><b><spring:theme code="checkout.orderConfirmation.payway"/></b>&nbsp <spring:theme code="checkout.orderConfirmation.msgpayway1"/> <b> ${fn:escapeXml(paymentInfo.cardType)} </b> <spring:theme code="checkout.orderConfirmation.msgpayway2"/> <b>${fn:escapeXml(paymentInfo.cardNumber)}</b></p>
+                <p><b><spring:theme code="checkout.orderConfirmation.deliverytime"/></b>&nbsp ${fn:escapeXml(deliveryTime)}</p>
+                <p><b><spring:theme code="checkout.orderConfirmation.totalPrice"/></b>&nbsp ${fn:escapeXml(orderData.totalPriceWithTax.formattedValue)}</p>
+            </div>
+            <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 text-checkout">
+                <p><b><spring:theme code="checkout.orderConfirmation.msgfollow" /></b></p>
+            </div>
+	    </div>
 	</div>
-	
-	<order:giftCoupons giftCoupons="${giftCoupons}"/>
-		
+
+	<%--<order:giftCoupons giftCoupons="${giftCoupons}"/>
+
 	<c:if test="${not empty guestRegisterForm}">
 		<div class="checkout__new-account">
 			<div class="checkout__new-account__headline"><spring:theme code="guest.register"/></div>
 			<p><spring:theme code="order.confirmation.guest.register.description"/></p>
-	
+
 			<form:form method="post" commandName="guestRegisterForm" class="checkout__new-account__form clearfix">
                 <div class="col-sm-8 col-sm-push-2 col-md-6 col-md-push-3">
                     <form:hidden path="orderCode"/>
@@ -70,11 +83,11 @@
                 </div>
 			</form:form>
 		</div>
-	</c:if>
+	</c:if>--%>
 </div>
 
-<div class="well well-tertiary well-single-headline">
+<%--<div class="well well-tertiary well-single-headline">
     <div class="well-headline">
         <spring:theme code="checkout.multi.order.summary" />
     </div>
-</div>
+</div>--%>

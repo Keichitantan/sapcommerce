@@ -5,7 +5,8 @@ ACC.navigation = {
     _autoload: [
         "offcanvasNavigation",
         "myAccountNavigation",
-        "orderToolsNavigation"
+        "orderToolsNavigation",
+        "llenarSelect"
     ],
 
     offcanvasNavigation: function(){
@@ -121,12 +122,13 @@ ACC.navigation = {
 
 
             //FOR DESKTOP
-            var myAccountHook = $("<div>").addClass("myAccountLinksHeader js-myAccount-toggle")
-			.attr("data-toggle", "collapse")
-			.attr("data-parent", ".nav__right")
-			.text(oMyAccountData.data("title"));
+            var myAccountHook = $("<div>").addClass("myAccountLinksHeader js-myAccount-toggle prueba")
+            .attr("data-toggle", "collapse")
+            .attr("data-parent", ".nav__right");
+            //.text(oMyAccountData.data("title"));//.appendChild(oLinkIMG);
 
             myAccountHook.insertBefore(oMyAccountData);
+            myAccountHook.append("<img alt='myAccount' onerror='this.src="+'"/_ui/responsive/common/images/iconos/WEB/UI icons/busqueda.png"'+"' width='20px' height='20px' src='/_ui/responsive/common/images/iconos/WEB/header/mi-cuenta.png'><div>"+oMyAccountData.data('title')+"</div>");
 
             //*For toggling collapse myAccount on Desktop instead of with Bootstrap.js
             $('.myAccountLinksHeader').click(function () {
@@ -199,14 +201,30 @@ ACC.navigation = {
             var oLink = oDoc.createElement("a");
             oLink.title = aAcctData[i].text;
             oLink.href = aAcctData[i].link;
-            oLink.innerHTML = ACC.common.encodeHtml(aAcctData[i].text);
+            var split = aAcctData[i].link.split("/");
+            var ultimo = split.pop ();
+            console.log(aAcctData[i].link);
+            console.log(ultimo);
 
+            var red = '/_ui/responsive/common/images/iconos/WEB/UI icons/'+ultimo+'_rojo.png';
+            var normal = '/_ui/responsive/common/images/iconos/WEB/UI icons/'+ultimo+'.png';
+            oLink.innerHTML = "<div class='myAccount-arrow'>"+
+                                "<img onerror='this.src="+'"/_ui/responsive/common/images/iconos/WEB/UI icons/busqueda.png"'+"' id='img-li-"+i+"' alt='"+ultimo+"' width='16px' height='16px' src='/_ui/responsive/common/images/iconos/WEB/UI icons/"+ultimo+".png'></div>"+
+                                "<div class='myAccount-text'>"+ACC.common.encodeHtml(aAcctData[i].text)+"</div>"+
+                                "<div class='myAccount-arrow glyphicon glyphicon-chevron-right'></div>";
             var oListItem = oDoc.createElement("li");
             oListItem.appendChild(oLink);
             oListItem = $(oListItem);
-            oListItem.addClass("auto col-md-4");
+            if((aAcctData.length-1) == i){
+                oListItem.addClass("auto col-md-12 myAccount-li border-none");
+            }else{
+                oListItem.addClass("auto col-md-12 myAccount-li");
+            }
+            oListItem.attr("onMouseOver", "ACC.navigation.changeImg('img-li-"+i+"', '"+red+"')");
+            oListItem.attr("onMouseOut", "ACC.navigation.changeImg('img-li-"+i+"', '"+normal+"')");
             oMMainNavDesktop.get(0).appendChild(oListItem.get(0));
         }
+
 
         //hide and show content areas for desktop
         $('.js-secondaryNavAccount').on('shown.bs.collapse', function () {
@@ -255,5 +273,20 @@ ACC.navigation = {
         $('.js-nav-order-tools').on('click', function(e){
             $(this).toggleClass('js-nav-order-tools--active');
         });
+    },
+
+    changeImg: function(id, img){
+        $("#"+id).attr("src", img);
+    },
+
+    llenarSelect: function(){
+        $("#select-country").html('<form:form action="#" method="post">'+
+                                        '<div class="form-group">'+
+                                           '<select name="code" class="form-control">'+
+                                               '<option data-img-src="${commonResourcePath}/images/iconos/WEB/redes sociales/pinterest.png">Mexico</option>'+
+                                           '</select>'+
+                                        '</div>'+
+                                    '</form:form>');
     }
+
 };

@@ -8,8 +8,7 @@
 # Information and shall use it only in accordance with the terms of the
 # license agreement you entered into with SAP.
 # -----------------------------------------------------------------------
-# ImpEx for Importing Products into Apparel Store
-#% impex.setLocale( Locale.GERMAN ); 
+
 
 # Macros / Replacement Parameter definitions
 $productCatalog=flexiProductCatalog
@@ -19,10 +18,7 @@ $baseProduct=baseProduct(code, catalogVersion(catalog(id[default='$productCatalo
 $approved=approvalstatus(code)[default='approved']
 $categories=source(code, $catalogVersion)[unique=true]
 $products=target(code, $catalogVersion)[unique=true]
-
-# Apparel products use Variants with a structure:
-# ApparelProduct > ApparelStyleVariantProduct > ApparelSizeVariantProduct
-# Apparel products may have no variations, only colour (style) variations or both colour and size variations.
+$lang=es_MX
 
 # Create products
 INSERT_UPDATE Product;code[unique=true];catalogversion(catalog(id[default=flexiProductCatalog]),version[default='Staged'])[unique=true,default=flexiProductCatalog:Staged];unit(code);supercategories(code,catalogversion(catalog(id[default=flexiProductCatalog]),version[default='Staged'])[unique=true,default=flexiProductCatalog:Staged]);varianttype(code);approvalstatus(code)[default='approved'];
@@ -37,7 +33,7 @@ INSERT_UPDATE Product;code[unique=true];catalogversion(catalog(id[default=flexiP
 ;25905;flexiProductCatalog:Staged;;;ApparelStyleVariantProduct;check;
 ;25908;flexiProductCatalog:Staged;;;ApparelStyleVariantProduct;check;
 ;34101;flexiProductCatalog:Staged;;;ApparelStyleVariantProduct;check;
-;34107;flexiProductCatalog:Staged;;;ApparelStyleVariantProduct;check;
+;34107;flexiProductCatalog:Staged;;;ApparelStyleVariantProduct;approved;
 ;34108;flexiProductCatalog:Staged;;;ApparelStyleVariantProduct;check;
 ;34109;flexiProductCatalog:Staged;;;ApparelStyleVariantProduct;check;
 ;34207;flexiProductCatalog:Staged;;;ApparelStyleVariantProduct;check;
@@ -66,7 +62,7 @@ INSERT_UPDATE ApparelStyleVariantProduct;code[unique=true];catalogversion(catalo
 ;1390014088;flexiProductCatalog:Staged;34208:flexiProductCatalog:Staged;;;;ApparelSizeVariantProduct;check
 ;1390014089;flexiProductCatalog:Staged;34208:flexiProductCatalog:Staged;;;;ApparelSizeVariantProduct;check
 ;1390014090;flexiProductCatalog:Staged;34101:flexiProductCatalog:Staged;;;;ApparelSizeVariantProduct;check
-;1390014092;flexiProductCatalog:Staged;34107:flexiProductCatalog:Staged;;;;ApparelSizeVariantProduct;check
+;1390014092;flexiProductCatalog:Staged;34107:flexiProductCatalog:Staged;;;;ApparelSizeVariantProduct;approved
 ;1390014093;flexiProductCatalog:Staged;34108:flexiProductCatalog:Staged;;;;ApparelSizeVariantProduct;check
 ;1390014094;flexiProductCatalog:Staged;34108:flexiProductCatalog:Staged;;;;ApparelSizeVariantProduct;check
 ;1390014095;flexiProductCatalog:Staged;34109:flexiProductCatalog:Staged;;;;ApparelSizeVariantProduct;check
@@ -258,7 +254,7 @@ INSERT_UPDATE ApparelSizeVariantProduct;code[unique=true];catalogversion(catalog
 ;7500421187944;flexiProductCatalog:Staged;1390014090:flexiProductCatalog:Staged;;;;;;check;
 ;7500421187951;flexiProductCatalog:Staged;1390014090:flexiProductCatalog:Staged;;;;;;check;
 ;7500421187968;flexiProductCatalog:Staged;1390014090:flexiProductCatalog:Staged;;;;;;check;
-;7500421187975;flexiProductCatalog:Staged;1390014092:flexiProductCatalog:Staged;;;;;;check;
+;7500421187975;flexiProductCatalog:Staged;1390014092:flexiProductCatalog:Staged;;;;;;approved;
 ;7500421187982;flexiProductCatalog:Staged;1390014092:flexiProductCatalog:Staged;;;;;;check;
 ;7500421187999;flexiProductCatalog:Staged;1390014092:flexiProductCatalog:Staged;;;;;;check;
 ;7500421188002;flexiProductCatalog:Staged;1390014092:flexiProductCatalog:Staged;;;;;;check;
@@ -391,8 +387,19 @@ INSERT_UPDATE ApparelSizeVariantProduct;code[unique=true];catalogversion(catalog
 ;7500421286708;flexiProductCatalog:Staged;1390016181:flexiProductCatalog:Staged;;;;;;check;
 ;7500421286715;flexiProductCatalog:Staged;1390016181:flexiProductCatalog:Staged;;;;;;check;
 
-INSERT_UPDATE CategoryProductRelation;$categories;$products
 
+
+# Update allProducts with localisations
+UPDATE ApparelStyleVariantProduct;code[unique=true];catalogversion(catalog(id[default=flexiProductCatalog]),version[default='Staged'])[unique=true,default=flexiProductCatalog:Staged];style;name[lang=$lang]
+;1390014092;flexiProductCatalog:Staged;Azul;Bota 092 
+
+ 
+UPDATE ApparelSizeVariantProduct;code[unique=true];catalogversion(catalog(id[default=flexiProductCatalog]),version[default='Staged'])[unique=true,default=flexiProductCatalog:Staged];style;size;name[lang=$lang]
+;7500421187975;flexiProductCatalog:Staged;Azul;22;Bota 092 Azul
+
+
+
+INSERT_UPDATE CategoryProductRelation;$categories;$products
 ;Dama_Flexi_Country;25520;
 ;Dama_Casual;25521;
 ;Dama_Casual;25522;
@@ -403,3 +410,21 @@ INSERT_UPDATE CategoryProductRelation;$categories;$products
 ;Dama_De_Vestir;34108;
 ;Dama_De_Vestir;34109;
 ;Dama_Casual;25908;
+
+######flexi products
+
+# Create products
+INSERT_UPDATE FlexiProduct;code[unique=true];name;$catalogVersion;unit(code);supercategories(code,$catalogVersion);varianttype(code);$approved
+;401602;ESTILO 401602;;PR;;FlexiVariantProductColor;
+
+# Create FlexiVariantProductColor variants
+INSERT_UPDATE FlexiVariantProductColor;code[unique=true];name;colorMkt;$catalogVersion;$baseProduct;unit(code);supercategories(code,$catalogVersion);varianttype(code)      ;$approved
+;1390016776;Sneaker urbano aplicaciones;Azul;;401602;PR;;FlexiVariantProductSize;
+;1390016743;Sneaker urbano aplicaciones;Chocolate;;401602;PR;;FlexiVariantProductSize;
+
+# Create FlexiVariantProductSize variants
+INSERT_UPDATE FlexiVariantProductSize;code[unique=true];name;size;$catalogVersion;$baseProduct;unit(code);supercategories(code,$catalogVersion);$approved
+;7500421336762;Sneaker urbano aplicaciones;25.0;;1390016776;PR;;
+;7500421336779;Sneaker urbano aplicaciones;25.5;;1390016776;PR;;                              
+;7500421335260;Sneaker urbano aplicaciones;25.0;;1390016743;PR;;
+;7500421335277;Sneaker urbano aplicaciones;25.5;;1390016743;PR;;

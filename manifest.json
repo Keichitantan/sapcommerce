@@ -16,9 +16,9 @@
         "FlexiB2Cbackoffice",
         "FlexiB2Ccore",	    
         "FlexiB2Cfacades",
-	"FlexiB2Cfulfilmentprocess",
-	"FlexiB2Cinitialdata",
-	"FlexiB2Cstorefront",    
+	    "FlexiB2Cfulfilmentprocess",
+	    "FlexiB2Cinitialdata",
+	    "FlexiB2Cstorefront",    
         "yaddon",
         "ycommercewebservices",
         "cmsoccaddon",
@@ -53,7 +53,13 @@
         "smarteditaddon",
         "smarteditwebservices",
         "ysmarteditmodule",
-	"azurecloudhotfolder"
+	    "azurecloudhotfolder",
+		"customerinterestsservices",
+		"customerinterestsaddon",
+		"customerinterestsfacades",
+		"stocknotificationservices",
+		"stocknotificationaddon",
+		"stocknotificationfacades"
     ],
    "useConfig": {
         "solr": {
@@ -107,7 +113,7 @@
         },
         {
             "key": "google.api.key",
-            "value": "<GOOGLE_API_KEY>"
+            "value": "AIzaSyBfZqHux5qdtgeoKYJTUVyDEUvNm1pNS6g"
         },
         {
             "key": "azure.hotfolder.storage.container.name",
@@ -119,7 +125,7 @@
         },
         {
             "key": "azure.hotfolder.storage.container.match.pattern",
-            "value": "<^((?!ignore).)*$>"
+            "value": "^((?!ignore).)*$"
         },
         {
             "key": "azure.hotfolder.storage.polling.fixed.rate",
@@ -127,11 +133,7 @@
         },
         {
             "key": "azure.hotfolder.storage.delete.remote.files",
-            "value": "false"
-        },
-        {
-            "key": "azure.hotfolder.storage.account.name",
-            "value": "mgipk3bjvi4ioir3hcivafy"
+            "value": "true"
         },	
         {
             "key": "cloud.hotfolder.default.mapping.root.dir",
@@ -147,7 +149,7 @@
         },	    
         {
             "key": "cloud.hotfolder.default.mapping.file.name.pattern",
-            "value": "^(customer|product|url_media)-\\d+.*"
+            "value": "^(customer|product|url_media|flexi_product)-\\d+.*"
         },
         {
             "key": "cloud.hotfolder.storage.file.sort.name.prefix.priority",
@@ -155,7 +157,7 @@
         },
         {
             "key": "cloud.hotfolder-storage.file.sort.name.sequence",
-            "value": "<^(?:\\D*)-(\\d+)\\.*>"
+            "value": "^(?:\\D*)-(\\d+)\\.*"
         },	    
         {
             "key": "cloud.hotfolder.default.zip.header.catalog",
@@ -202,11 +204,8 @@
 	    "value":""
         },
         {
-
             "key": "lang.packs",
-
-            "value": "es_MX,en"
-
+            "value": "es_MX,en,de"
         }	    
     ],
     "storefrontAddons": [
@@ -259,7 +258,17 @@
             "addon": "smarteditaddon",
             "storefront": "FlexiB2Cstorefront",
             "template": "yacceleratorstorefront"
-        }
+        },
+        {
+            "addon": "customerinterestsaddon",
+            "storefront": "FlexiB2Cstorefront",
+            "template": "yacceleratorstorefront"
+        },
+        {
+            "addon": "stocknotificationaddon",
+            "storefront": "FlexiB2Cstorefront",
+            "template": "yacceleratorstorefront"
+        }		
     ],    
          "aspects": [
         {
@@ -294,6 +303,22 @@
 		    "contextPath": "/cmssmarteditwebservices"
 		},
 		{
+		    "name": "ysmarteditmodule",
+		    "contextPath": "/ysmarteditmodule"			
+		},
+		{
+		    "name": "cmswebservices",
+		    "contextPath": "/cmswebservices"			
+		},
+                {
+                    "name": "previewwebservices",
+                    "contextPath": "/previewwebservices"
+                },		    
+                {
+                    "name": "permissionswebservices",
+                    "contextPath": "/permissionswebservices"
+                },		    
+		{
 		    "name": "personalizationsmartedit",
 		    "contextPath": "/personalizationsmartedit"
 		},
@@ -308,7 +333,11 @@
                 {
                     "name": "FlexiB2Cstorefront",
                     "contextPath": ""
-                }		    
+                },
+		{
+		    "name": "oauth2",
+		    "contextPath": "/authorizationserver"
+		}		    
             ]
         },
         {

@@ -143,10 +143,10 @@
                         </form:form>
                     </c:if>
                     <c:if test="${allowedActions['EDIT']}">
-                        <button type="button" class="btn btn-primary btn-block item__btn ${allowedActions['CHECKOUT'] ? 'js-quote-warning-btn':'js-quote-edit-btn'}" 
+                        <button type="button" class="btn btn-primary btn-block item__btn ${allowedActions['CHECKOUT'] ? 'js-quote-warning-btn':'js-quote-edit-btn'}"
                             id="editQuoteButton" data-quote-edit-url="${fn:escapeXml(editQuoteUrl)}">
                             <spring:theme code="quote.edit" />
-                        </button>    
+                        </button>
                     </c:if>
                     <c:if test="${allowedActions['REQUOTE']}">
                         <form:form action="${requoteUrl}" id="requoteForm" method="POST">

@@ -25,11 +25,13 @@
 		data-mini-cart-items-text="<spring:theme code="basket.items"/>"
 		>
 		<div class="mini-cart-icon">
-			<span class="glyphicon glyphicon-shopping-cart "></span>
+			<%--<span class="glyphicon glyphicon-shopping-cart "></span>--%>
+			<img class="footer_social glyphicon glyphicon-shopping-cart" alt="myAccount" src="${commonResourcePath}\images\iconos\WEB\header\carrito.png">
+			<p class="header-icons hidden-xs"><spring:theme code="basket.page.totals.miCarrito" /></p>
 		</div>
 		<ycommerce:testId code="miniCart_items_label">
 
-			<div class="mini-cart-price js-mini-cart-price hidden-xs hidden-sm">
+			<%--<div class="mini-cart-price js-mini-cart-price hidden-xs hidden-sm">
 				<c:if test="${totalDisplay == 'TOTAL'}">
 					<format:price priceData="${totalPrice}" />
 				</c:if>
@@ -41,8 +43,8 @@
 				<c:if test="${totalDisplay == 'TOTAL_WITHOUT_DELIVERY'}">
 					<format:price priceData="${totalNoDelivery}" />
 				</c:if>
-			</div>
-			<div class="mini-cart-count js-mini-cart-count"><span class="nav-items-total">${totalItems lt 100 ? fn:escapeXml(totalItems) : "99+"}<span class="items-desktop hidden-xs">&nbsp;<spring:theme code="basket.items"/></span></span></div>
+			</div>--%>
+			<div class="mini-cart-count js-mini-cart-count hidden-sm hidden-md hidden-lg"><span class="nav-items-total">${totalItems lt 100 ? fn:escapeXml(totalItems) : "99+"}<span class="items-desktop hidden-xs">&nbsp;<spring:theme code="basket.items"/></span></span></div>
 		</ycommerce:testId>
 
 	</a>

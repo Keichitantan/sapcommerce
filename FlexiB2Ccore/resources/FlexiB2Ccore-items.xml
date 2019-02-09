@@ -35,13 +35,14 @@
     </enumtypes>
 
     <relations>
+
         <!--		FlexiProduct - Ocasion  -->
         <relation code="FlexiProductOcasion" localized="false" generate="true" autocreate="true">
             <deployment table="FlexiProductOcasionRel" typecode="10159"/>
             <sourceElement type="Ocasion" qualifier="ocasionType"  cardinality="many" ordered="false">
                 <modifiers read="true" write="true" search="true" optional="true" />
             </sourceElement>
-            <targetElement type="FlexiProduct" qualifier="flexiProductType" cardinality="many" ordered="false">
+            <targetElement type="FlexiVariantProductColor" qualifier="flexiProductType" cardinality="many" ordered="false">
                 <modifiers read="true" write="true" search="true" optional="true" partof="true" />
             </targetElement>
         </relation>
@@ -52,7 +53,7 @@
             <sourceElement type="Material" qualifier="materialType"  cardinality="many" ordered="false">
                 <modifiers read="true" write="true" search="true" optional="true" />
             </sourceElement>
-            <targetElement  type="FlexiProduct" qualifier="flexiProductType"  cardinality="many" ordered="false">
+            <targetElement  type="FlexiVariantProductColor" qualifier="flexiProductType"  cardinality="many" ordered="false">
                 <modifiers read="true" write="true" search="true" optional="true" partof="true" />
             </targetElement>
         </relation>
@@ -63,7 +64,7 @@
             <sourceElement type="Suela" qualifier="suelaType"  cardinality="many"  ordered="false">
                 <modifiers read="true" write="true" search="true" optional="true" />
             </sourceElement>
-            <targetElement type="FlexiProduct" qualifier="flexiProductType" cardinality="many" ordered="false">
+            <targetElement type="FlexiVariantProductColor" qualifier="flexiProductType" cardinality="many" ordered="false">
                 <modifiers read="true" write="true" search="true" optional="true" partof="true" />
             </targetElement>
         </relation>
@@ -74,7 +75,7 @@
             <sourceElement type="Plantilla" qualifier="plantillaType"  cardinality="many" ordered="false">
                 <modifiers read="true" write="true" search="true" optional="true" />
             </sourceElement>
-            <targetElement type="FlexiProduct" qualifier="flexiProductType"  cardinality="many" ordered="false">
+            <targetElement type="FlexiVariantProductColor" qualifier="flexiProductType"  cardinality="many" ordered="false">
                 <modifiers read="true" write="true" search="true" optional="true" partof="true" />
             </targetElement>
         </relation>
@@ -90,37 +91,31 @@
             </targetElement>
         </relation>
 
-
     </relations>
 
     <itemtypes>
 
         <!-- Add your item definitions here -->
+
+        <itemtype code="PaymentInfo" autocreate="false" generate="false">
+            <attributes>
+                <attribute type="java.lang.String" qualifier="reference">
+                    <description>referencia</description>
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
         <typegroup name="Flexi">
+
             <itemtype code="FlexiProduct" extends="Product" autocreate="true"
                       generate="true" jaloclass="de.hybris.platform.yacceleratorcore.jalo.FlexiProduct">
                 <description>Products Flexi</description>
                 <attributes>
+
                     <!-- Atributo Genero-->
                     <attribute qualifier="gender" type="Gender">
                         <description>Genero</description>
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-                    <!-- Atributo Linea-->
-                    <attribute qualifier="linea" type="java.lang.Float">
-                        <description>
-                            Se introducirá la línea o catálogo al que pertenece el producto con el que se está trabajando.
-                        </description>
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-
-                    <!-- Atributo NombreLinea-->
-                    <attribute qualifier="nombreLinea" type="java.lang.String">
-                        <description>
-                            Se introducirá la línea o catálogo al que pertenece el producto con el que se está trabajando.
-                        </description>
                         <modifiers />
                         <persistence type="property" />
                     </attribute>
@@ -130,148 +125,9 @@
                         <description>Campo de tipo booleano en el cual se introducirán cualquiera de las siguientes dos opciones binarias: SI,NO
                             Esto para saber la asociación del producto con un tipo de catálogo.
                         </description>
-                        <modifiers read="true" write="true" search="true" optional="false"/>
                         <defaultvalue>Boolean.FALSE</defaultvalue>
-                        <persistence type="property">
-                            <columntype database="sap">
-                                <value>BOOLEAN</value>
-                            </columntype>
-                        </persistence>
-                    </attribute>
-
-                    <!-- Atributo statusSap-->
-                    <attribute qualifier="statusSap" type="java.lang.Integer">
-                        <description>Campo de tipo numérico en el cual se actualice el estatus de cada producto tal y como se muestra en la fuente de los datos.</description>
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-
-                    <!-- Atributo mediaTemporada-->
-                    <attribute qualifier="mediaTemporada" type="java.lang.String">
-                        <description>Campo de tipo alfanumérico en donde se indica si el modelo pertenece o no a un modelo de media temporada,
-                            que solo en el caso que el dato en el campo sea ?SI? se deberá de complementar con el mes y año al que pertenezca el modelo (SI_OCT2018).
-                        </description>
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-
-                    <!-- Atributo macrotendecia-->
-                    <attribute qualifier="macrotendecia" type="java.lang.String">
-                        <description>Campo alfanumérico de longitud 300 en donde se introduce una asociación de acuerdo con la línea de tendencia a la cual pertenezca el artículo.</description>
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-
-                    <!-- Atributo subtendencias-->
-                    <attribute qualifier="subtendencias" type="java.lang.String">
-                        <description>Campo alfanumérico en donde se introduce una asociación de acuerdo con la línea de tendencia a la cual pertenezca el artículo.</description>
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-
-                    <!-- Atributo materialLimpieza-->
-                    <attribute qualifier="materialLimpieza" type="java.lang.String">
-                        <description>Campo alfanumérico en donde se describe de que materiales se encuentra compuesto el artículo registrado.</description>
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-
-                    <!-- Atributo descripcionLimpieza-->
-                    <attribute qualifier="descripcionLimpieza" type="java.lang.String">
-                        <description>Campo alfanumérico en donde se le agregarán los debidos cuidados para el material o materiales de los que se encuentra compuesto el artículo.</description>
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-
-                    <!-- Atributo productosLimpiezaRecomendados-->
-                    <attribute qualifier="productosLimpiezaRecomendados" type="java.lang.String">
-                        <description>Campo alfanumérico en donde se introducirá, en caso de que aplique, el tipo de producto con el que se recomienda se de limpieza y mantenimiento al artículo seleccionado.</description>
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-
-                    <!-- Atributo alturaTacon-->
-                    <attribute qualifier="alturaTacon" type="java.lang.Float">
-                        <description>Campo de tipo numérico con capacidad para 2 decimales, utilizado como filtro, en donde se especifica en caso de que aplique la altura del tacón de cada artículo.</description>
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-
-                    <!-- Atributo alturaMediaPlataforma-->
-                    <attribute qualifier="alturaMediaPlataforma" type="java.lang.Float">
-                        <description>Campo de tipo numérico con capacidad para 2 decimales, en donde se introducirá en caso de que aplique, la altura de media plataforma del artículo correspondiente.</description>
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-
-                    <!-- Atributo alturaTuboBota-->
-                    <attribute qualifier="alturaTuboBota" type="java.lang.Float">
-                        <description>Campo de tipo numérico, en donde se introducirá en caso de que aplique, la altura del tubo del artículo en caso de que sea de tipo bota.</description>
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-
-                    <!-- Atributo diametroTuboBota-->
-                    <attribute qualifier="diametroTuboBota" type="java.lang.Float">
-                        <description>Campo de tipo numérico, en donde se introducirá en caso de que aplique, la altura del tubo del artículo en caso de que sea de tipo bota.</description>
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-
-                    <!-- Atributo acabado-->
-                    <attribute qualifier="acabado" type="java.lang.String">
-                        <description>Campo de tipo alfanumérico, donde se introducirá el tipo de acabado de cada artículo.</description>
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-
-                    <!-- Atributo forro-->
-                    <attribute qualifier="forro" type="java.lang.String">
-                        <description>Campo de tipo alfanumérico, donde se introducirá en caso de que aplique el tipo de material del forro de cada artículo.</description>
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-
-                    <!-- Atributo ancho-->
-                    <attribute qualifier="ancho" type="java.lang.String">
-                        <description>Campo de tipo alfanumérico, donde se introducirá un código de identificación según el negocio para cada artículo.</description>
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-
-                    <!-- Atributo contruccion-->
-                    <attribute qualifier="contruccion" type="java.lang.String">
-                        <description>Campo de tipo alfanumérico, en el cual se especifica la manera en que el artículo fue construido.</description>
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-
-                    <!-- Atributo atributosEsteticos-->
-                    <attribute qualifier="atributosEsteticos" type="java.lang.String">
-                        <description>Campo de tipo alfanumérico, en el cual se enlistan los detalles físico o estéticos de cada producto registrado.</description>
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-
-                    <!-- Atributo atributosTecnicos-->
-                    <attribute qualifier="atributosTecnicos" type="java.lang.String">
-                        <description>Campo de tipo alfanumérico, en el cual se enlistan los detalles específicos técnicos, empleados para distinguir cada uno de los productos.</description>
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-
-                    <!-- Atributo corridaMex-->
-                    <attribute qualifier="corridaMex" type="java.lang.String">
-                        <description>Campo de tipo alfanumérico, en el cual se documenta los pares en existencia de acuerdo con las tallas y tamaños en especificaciones mexicanas </description>
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-
-                    <!-- Atributo corridaUsa-->
-                    <attribute qualifier="corridaUsa" type="java.lang.String">
-                        <description>Campo de tipo alfanumérico, en el cual se documenta los pares en existencia de acuerdo con las tallas y tamaños en especificaciones estadounidenses.</description>
-                        <modifiers />
-                        <persistence type="property" />
+                        <modifiers read="true" write="true" search="true" optional="false"/>
+                        <persistence type="property"/>
                     </attribute>
 
                     <!-- Atributo edad-->
@@ -281,44 +137,11 @@
                         <persistence type="property" />
                     </attribute>
 
-                    <!-- Atributo estilo-->
-                    <attribute qualifier="estilo" type="java.lang.Integer">
-
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-
-                    <!-- Atributo tipoPielSap-->
-                    <attribute qualifier="tipoPielSap" type="java.lang.String">
-                        <description>Identificador correspondiente al tipo de piel de cada artículo proveniente del ECC.</description>
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-
-                    <!-- Atributo forroSap-->
-                    <attribute qualifier="forroSap" type="java.lang.String">
-                        <description>Identificador correspondiente al material del forro de cada artículo proveniente del ECC.</description>
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-
-                    <!-- Atributo PrecioSap-->
-                    <attribute qualifier="precioSap" type="java.lang.String">
-                        <description>Ientificador correspondiente a un dato dimensional de cada artículo proveniente del ECC.</description>
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-
-                    <!-- Atributo construccionSap-->
-                    <attribute qualifier="construccionSap" type="java.lang.String">
-                        <description>Identificador correspondiente a la manera como fue la construcción de cada artículo proveniente del ECC.</description>
-                        <modifiers />
-                        <persistence type="property" />
-                    </attribute>
-
-                    <!-- Atributo beneficiosFlexi-->
-                    <attribute qualifier="beneficiosFlexi" type="java.lang.String">
-                        <description>Identificador correspondiente a los diferentes tipos de beneficios asociados a cada artículo proveniente del ECC.</description>
+                    <!-- Atributo Mercado-->
+                    <attribute qualifier="mercado" type="java.lang.String">
+                        <description> Campo de tipo char, en el cual se documenta en caso de que se encuentre definido el mercado objetivo
+                            de cada artículo. (Adulto joven, adulto medio, etc.)
+                        </description>
                         <modifiers />
                         <persistence type="property" />
                     </attribute>
@@ -428,6 +251,197 @@
                         <modifiers/>
                         <persistence type="property"/>
                     </attribute>
+
+                    <!-- Atributo Linea-->
+                    <attribute qualifier="linea" type="java.lang.Float">
+                        <description>
+                            Se introducirá la línea o catálogo al que pertenece el producto con el que se está trabajando.
+                        </description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <!-- Atributo NombreLinea-->
+                    <attribute qualifier="nombreLinea" type="java.lang.String">
+                        <description>
+                            Se introducirá la línea o catálogo al que pertenece el producto con el que se está trabajando.
+                        </description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <!-- Atributo statusSap-->
+                    <attribute qualifier="statusSap" type="java.lang.Float">
+                        <description>Campo de tipo numérico en el cual se actualice el estatus de cada producto tal y como se muestra en la fuente de los datos.</description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <!-- Atributo tipoPielSap-->
+                    <attribute qualifier="tipoPielSap" type="java.lang.String">
+                        <description>Identificador correspondiente al tipo de piel de cada artículo proveniente del ECC.</description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <!-- Atributo forroSap-->
+                    <attribute qualifier="forroSap" type="java.lang.String">
+                        <description>Identificador correspondiente al material del forro de cada artículo proveniente del ECC.</description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <!-- Atributo contruccion-->
+                    <attribute qualifier="contruccion" type="java.lang.String">
+                        <description>Campo de tipo alfanumérico, en el cual se especifica la manera en que el artículo fue construido.</description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <!-- Atributo mediaTemporada-->
+                    <attribute qualifier="mediaTemporada" type="java.lang.String">
+                        <description>Campo de tipo alfanumérico en donde se indica si el modelo pertenece o no a un modelo de media temporada,
+                            que solo en el caso que el dato en el campo sea ?SI? se deberá de complementar con el mes y año al que pertenezca el modelo (SI_OCT2018).
+                        </description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <!-- Atributo macrotendecia-->
+                    <attribute qualifier="macrotendecia" type="java.lang.String">
+                        <description>Campo alfanumérico de longitud 300 en donde se introduce una asociación de acuerdo con la línea de tendencia a la cual pertenezca el artículo.</description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <!-- Atributo subtendencias-->
+                    <attribute qualifier="subtendencias" type="java.lang.String">
+                        <description>Campo alfanumérico en donde se introduce una asociación de acuerdo con la línea de tendencia a la cual pertenezca el artículo.</description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <!-- Atributo materialLimpieza-->
+                    <attribute qualifier="materialLimpieza" type="java.lang.String">
+                        <description>Campo alfanumérico en donde se describe de que materiales se encuentra compuesto el artículo registrado.</description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <!-- Atributo descripcionLimpieza-->
+                    <attribute qualifier="descripcionLimpieza" type="java.lang.String">
+                        <description>Campo alfanumérico en donde se le agregarán los debidos cuidados para el material o materiales de los que se encuentra compuesto el artículo.</description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <!-- Atributo productosLimpiezaRecomendados-->
+                    <attribute qualifier="productosLimpiezaRecomendados" type="java.lang.String">
+                        <description>Campo alfanumérico en donde se introducirá, en caso de que aplique, el tipo de producto con el que se recomienda se de limpieza y mantenimiento al artículo seleccionado.</description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <!-- Atributo alturaTacon-->
+                    <attribute qualifier="alturaTacon" type="java.lang.Float">
+                        <description>Campo de tipo numérico con capacidad para 2 decimales, utilizado como filtro, en donde se especifica en caso de que aplique la altura del tacón de cada artículo.</description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <!-- Atributo alturaMediaPlataforma-->
+                    <attribute qualifier="alturaMediaPlataforma" type="java.lang.Float">
+                        <description>Campo de tipo numérico con capacidad para 2 decimales, en donde se introducirá en caso de que aplique, la altura de media plataforma del artículo correspondiente.</description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <!-- Atributo alturaTuboBota-->
+                    <attribute qualifier="alturaTuboBota" type="java.lang.Float">
+                        <description>Campo de tipo numérico, en donde se introducirá en caso de que aplique, la altura del tubo del artículo en caso de que sea de tipo bota.</description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <!-- Atributo diametroTuboBota-->
+                    <attribute qualifier="diametroTuboBota" type="java.lang.Float">
+                        <description>Campo de tipo numérico, en donde se introducirá en caso de que aplique, la altura del tubo del artículo en caso de que sea de tipo bota.</description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <!-- Atributo acabado-->
+                    <attribute qualifier="acabado" type="java.lang.String">
+                        <description>Campo de tipo alfanumérico, donde se introducirá el tipo de acabado de cada artículo.</description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <!-- Atributo forro-->
+                    <attribute qualifier="forro" type="java.lang.String">
+                        <description>Campo de tipo alfanumérico, donde se introducirá en caso de que aplique el tipo de material del forro de cada artículo.</description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <!-- Atributo ancho-->
+                    <attribute qualifier="ancho" type="java.lang.String">
+                        <description>Campo de tipo alfanumérico, donde se introducirá un código de identificación según el negocio para cada artículo.</description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <!-- Atributo atributosEsteticos-->
+                    <attribute qualifier="atributosEsteticos" type="java.lang.String">
+                        <description>Campo de tipo alfanumérico, en el cual se enlistan los detalles físico o estéticos de cada producto registrado.</description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <!-- Atributo atributosTecnicos-->
+                    <attribute qualifier="atributosTecnicos" type="java.lang.String">
+                        <description>Campo de tipo alfanumérico, en el cual se enlistan los detalles específicos técnicos, empleados para distinguir cada uno de los productos.</description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <!-- Atributo corridaMex-->
+                    <attribute qualifier="corridaMex" type="java.lang.String">
+                        <description>Campo de tipo alfanumérico, en el cual se documenta los pares en existencia de acuerdo con las tallas y tamaños en especificaciones mexicanas </description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <!-- Atributo corridaUsa-->
+                    <attribute qualifier="corridaUsa" type="java.lang.String">
+                        <description>Campo de tipo alfanumérico, en el cual se documenta los pares en existencia de acuerdo con las tallas y tamaños en especificaciones estadounidenses.</description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <!-- Atributo PlantillaSap-->
+                    <attribute qualifier="plantillaSap" type="java.lang.String">
+                        <description>Campo de tipo char donde se muestra el identificador correspondiente a la manera como fue la construcción
+                            de cada artículo proveniente del ECC</description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <!-- Atributo RecioSap-->
+                    <attribute qualifier="recioSap" type="java.lang.String">
+                        <description>Ientificador correspondiente a un dato dimensional de cada artículo proveniente del ECC.</description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+
+                    <!-- Atributo construccionSap-->
+                    <attribute qualifier="construccionSap" type="java.lang.String">
+                        <description>Identificador correspondiente a la manera como fue la construcción de cada artículo proveniente del ECC.</description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
                 </attributes>
 
             </itemtype>
@@ -443,6 +457,19 @@
                         <description>Size of the product.</description>
                         <modifiers/>
                         <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="relevancia" type="java.lang.Integer">
+                        <description>Campo de tipo numérico donde se muestra el identificador correspondiente a los artículos subidos
+                            recientemente con respecto a la fecha.</description>
+                        <modifiers />
+                        <persistence type="property" />
+                    </attribute>
+
+                    <attribute qualifier="masVendidos" type="java.lang.Integer">
+                        <description>Campo de tipo numérico donde se muestra el identificador correspondiente al flujo de venta
+                            del artículo para ubicar los más vendidos.</description>
+                        <modifiers />
+                        <persistence type="property" />
                     </attribute>
                 </attributes>
             </itemtype>

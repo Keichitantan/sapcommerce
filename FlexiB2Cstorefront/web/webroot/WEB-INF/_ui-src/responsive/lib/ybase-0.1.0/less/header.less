@@ -1,8 +1,7 @@
 @import "_navigation.less";
 
 header {
-  background: @header-background-color;
-  margin-bottom: @grid-gutter-width;
+  background: #FFF;
 
   .page-cartPage &,
   .page-homepage &,
@@ -118,3 +117,129 @@ header {
 
 }
 
+.header-icons{
+    font-weight: bold;
+    color: #000;
+    @media (min-width: @screen-md){
+        font-size: 9px;
+    }
+    @media (max-width: @screen-md){
+        font-size: 9px;
+    }
+}
+
+.space{
+    margin: 10px 0px 0px;
+}
+
+.header-li-1{
+    width: 32%;
+}
+
+.cuarentaPorcent{
+    width: 40% !important;
+}
+.header-li{
+    text-align: center;
+    @media (min-width: @screen-md){
+
+        width: 17% !important;
+        img{
+            margin-top: 8px;
+            width: 25px;
+            height: 25px;
+        }
+    }
+    @media (max-width: @screen-md){
+        img{
+            width: 18px;
+            height: 18px;
+        }
+    }
+}
+
+.flexi-red{
+    background: #dc363c;
+    span{
+        color: #FFF !important;
+    }
+}
+
+.flexi-gray{
+    border: 1px solid #cccccc;
+    text-align: center;
+    background: #f2f2f2;
+    font-size: 13px;
+    color: #000;
+    p{
+        font-weight: bold;
+        padding-top: 10px;
+        @media (max-width: @screen-md){
+            padding-top: 11px;
+        }
+    }
+    @media (max-width: @screen-md){
+        font-size: 12px;
+    }
+}
+
+.cienPorcent{
+    width: 100% !important;
+}
+
+.space-search{
+    margin-left: 7px !important;
+}
+
+.space-left-search{
+    padding-left: 0px;
+}
+
+.tableTop{
+    color: #2F2F2F;
+    width: 20%;
+    text-align: center;
+    p{
+        font-weight: bold;
+    }
+}
+
+.select-languaje{
+    padding-top: 7px;
+
+    select{
+        border: none !important;
+        font-size: 10px !important;
+        height: 25px !important;
+    }
+    option{
+        color: black !important;
+        background: white !important;
+    }
+}
+
+.select-pais{
+    padding-top: 11px;
+}
+
+.size11{
+    font-size: 11px !important;
+}
+
+.alert-info-top{
+    text-align: center;
+    background-color: #0c0c0c;
+    border-color: #ffffff;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 8px 10px;
+    button{
+        top: -7px !important;
+        color: white;
+        font-size: 30px;
+    }
+}
+
+.reverse-pais{
+    margin-left: -12px;
+}

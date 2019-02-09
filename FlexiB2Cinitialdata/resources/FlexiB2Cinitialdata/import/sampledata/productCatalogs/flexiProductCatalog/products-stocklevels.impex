@@ -8,16 +8,19 @@
 # Information and shall use it only in accordance with the terms of the
 # license agreement you entered into with SAP.
 # -----------------------------------------------------------------------
-# ImpEx for Importing Products stock levels into Apparel Store
 
 # Macros / Replacement Parameter definitions
-$productCatalog=apparelProductCatalog
-$productCatalogName=Apparel Product Catalog
+$productCatalog=flexiProductCatalog
+$productCatalogName=Flexi Product Catalog
 $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
-$vendor=
+$vendor=flexi
 
 # Create some Warehouses for the Vendor
-INSERT_UPDATE Warehouse;code[unique=true];vendor(code)[forceWrite=true];default[default='true']
 
 # Create Stock levels at the Warehouses for Products
 INSERT_UPDATE StockLevel;available[unique=true];warehouse(code)[unique=true];inStockStatus(code);maxPreOrder;maxStockLevelHistoryCount;overSelling;preOrder;productCode[unique=true];reserved
+;100;0700;notSpecified;0;0;0;0;7500421187975;0
+;90;0700;notSpecified;0;0;0;0;7500421336762;0
+;70;0700;notSpecified;0;0;0;0;7500421336779;0
+;40;0700;notSpecified;0;0;0;0;7500421335260;0
+;30;0700;notSpecified;0;0;0;0;7500421335277;0

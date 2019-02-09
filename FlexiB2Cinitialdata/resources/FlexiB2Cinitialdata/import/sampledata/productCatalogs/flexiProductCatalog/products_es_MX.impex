@@ -17,5 +17,23 @@ $catalogVersion=catalogVersion(catalog(id[default='flexiProductCatalog']),versio
 
 
 # Update allProducts with localisations
-UPDATE FlexiProduct;code[unique=true];$catalogVersion;name[lang=$lang];summary[lang=$lang];description[lang=$lang];ApparelStyleVariantProduct.style[lang=$lang];ApparelSizeVariantProduct.size[lang=$lang]
+UPDATE ApparelStyleVariantProduct;code[unique=true];catalogversion(catalog(id[default=flexiProductCatalog]),version[default='Staged'])[unique=true,default=flexiProductCatalog:Staged];style[lang=$lang];name[lang=$lang]
+;1390014092;flexiProductCatalog:Staged;Azul;Bota 092 
+
  
+UPDATE ApparelSizeVariantProduct;code[unique=true];catalogversion(catalog(id[default=flexiProductCatalog]),version[default='Staged'])[unique=true,default=flexiProductCatalog:Staged];style[lang=$lang];size[lang=$lang];name[lang=$lang]
+;7500421187975;flexiProductCatalog:Staged;Azul;22;Bota 092 Azul
+
+
+####Flexi Prod
+# Create FlexiVariantProductColor variants
+UPDATE FlexiVariantProductColor;code[unique=true];name[lang=$lang];colorMkt[lang=$lang];$catalogVersion;
+;1390016776;Sneaker urbano aplicaciones;Azul;
+;1390016743;Sneaker urbano aplicaciones;Chocolate;
+
+# Create FlexiVariantProductSize variants
+UPDATE FlexiVariantProductSize;code[unique=true];name[lang=$lang];size[lang=$lang];$catalogVersion;
+;7500421336762;Sneaker urbano aplicaciones;25.0;
+;7500421336779;Sneaker urbano aplicaciones;25.5;                       
+;7500421335260;Sneaker urbano aplicaciones;25.0;
+;7500421335277;Sneaker urbano aplicaciones;25.5;

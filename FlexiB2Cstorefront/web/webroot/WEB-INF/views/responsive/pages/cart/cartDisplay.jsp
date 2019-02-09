@@ -8,7 +8,7 @@
 
 <spring:htmlEscape defaultHtmlEscape="true" />
 
-<div class="cart-header border">
+<%--<div class="cart-header border">
     <div class="row">
         <div class="col-xs-12 col-sm-5">
             <h1 class="cart-headline">
@@ -40,7 +40,7 @@
             <cart:saveCart/>
         </div>
     </div>
-</div>
+</div>--%>
 
 
 <c:if test="${not empty cartData.rootGroups}">
@@ -48,20 +48,27 @@
     <c:url value="/quote/create" var="createQuoteUrl" scope="session"/>
     <c:url value="${continueUrl}" var="continueShoppingUrl" scope="session"/>
     <c:set var="showTax" value="false"/>
-
+    <div class="container">
     <div class="row">
         <div class="col-xs-12 pull-right cart-actions--print">
-            <div class="cart__actions border">
+            <div class="cart__actions">
                 <div class="row">
+                    <div class="col-sm-8 col-md-9 pull-left">
+                        <p class="cart__actions-title"><spring:theme code="basket.page.totals.miCarrito"/></p>
+                    </div>
+                    <div class="col-sm-8 col-md-9 pull-left">
+                        <p class="cart__actions-subtitle">Estos son los productos que se encuentran en tu carrito. Si ordena hoy se entrega antes del 3 de marzo del 2018
+                         con entrega gratuita en compras superiores a $499.00 MN</p>
+                    </div>
                     <div class="col-sm-4 col-md-3 pull-right">
                         <ycommerce:testId code="checkoutButton">
-                            <button class="btn btn-primary btn-block btn--continue-checkout js-continue-checkout-button" data-checkout-url="${fn:escapeXml(checkoutUrl)}">
+                            <button class="btn btn-primary btn-block btn--continue-checkout js-continue-checkout-button checkoutButtonStyle" data-checkout-url="${fn:escapeXml(checkoutUrl)}">
                                 <spring:theme code="checkout.checkout"/>
                             </button>
                         </ycommerce:testId>
                     </div>
 
-                    <c:if test="${not empty siteQuoteEnabled and siteQuoteEnabled eq 'true'}">
+                    <%--<c:if test="${not empty siteQuoteEnabled and siteQuoteEnabled eq 'true'}">
                         <div class="col-sm-4 col-md-3 col-md-offset-3 pull-right">
                             <button class="btn btn-default btn-block btn-create-quote js-create-quote-button" data-create-quote-url="${fn:escapeXml(createQuoteUrl)}">
                                 <spring:theme code="quote.create"/>
@@ -73,13 +80,14 @@
                         <button class="btn btn-default btn-block btn--continue-shopping js-continue-shopping-button" data-continue-shopping-url="${fn:escapeXml(continueShoppingUrl)}">
                             <spring:theme code="cart.page.continue"/>
                         </button>
-                    </div>
+                    </div>--%>
                 </div>
             </div>
         </div>
     </div>
+    </div>
 
-    <div class="row">
+    <%--<div class="row">
         <cart:exportCart/>
 
         <div class="col-sm-12 col-md-4 col-md-push-5">
@@ -106,7 +114,7 @@
                 </ycommerce:testId>
             </div>
         </div>
-    </div>
+    </div>--%>
 
     <cart:cartItems cartData="${cartData}"/>
 

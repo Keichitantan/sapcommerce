@@ -11,8 +11,8 @@
 <spring:htmlEscape defaultHtmlEscape="true" />
 
 <div class="js-cart-totals row">
-    <div class="col-xs-6 cart-totals-left"><spring:theme code="basket.page.totals.subtotal"/></div>
-    <div class="col-xs-6 cart-totals-right text-right"><ycommerce:testId code="Order_Totals_Subtotal"><format:price priceData="${cartData.subTotal}"/></ycommerce:testId></div>
+    <%--<div class="col-xs-6 cart-totals-left"><spring:theme code="basket.page.totals.subtotal"/></div>
+    <div class="col-xs-6 cart-totals-right text-right"><ycommerce:testId code="Order_Totals_Subtotal"><format:price priceData="${cartData.subTotal}"/></ycommerce:testId></div>--%>
 
 
     <c:if test="${not empty cartData.deliveryCost}">
@@ -52,8 +52,8 @@
 		</div>
 	</c:if>
 
-    <div class="col-xs-6 cart-totals-left grand-total"><spring:theme code="basket.page.totals.total"/></div>
-    <div class="col-xs-6 cart-totals-right text-right grand-total">
+    <div class="col-sm-offset-6 col-md-offset-8 col-xs-6 col-sm-3 col-md-2 cart-totals-left grand-total"><spring:theme code="basket.page.totals.total"/></div>
+    <div class="col-xs-6 col-sm-3 col-md-2 cart-totals-right text-right grand-total">
         <ycommerce:testId code="cart_totalPrice_label">
             <c:choose>
                 <c:when test="${showTax}">
@@ -67,11 +67,11 @@
     </div>
 
 
-    <c:if test="${not cartData.net}">
+    <%--<c:if test="${not cartData.net}">
         <div class="cart-totals-taxes text-right">
             <ycommerce:testId code="cart_taxes_label"><spring:theme code="basket.page.totals.grossTax" arguments="${cartData.totalTax.formattedValue}" argumentSeparator="!!!!"/></ycommerce:testId>
          </div>
-    </c:if>
+    </c:if>--%>
 
 
     <c:if test="${cartData.net && not showTax }">

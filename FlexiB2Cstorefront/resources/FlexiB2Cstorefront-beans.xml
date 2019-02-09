@@ -11,6 +11,9 @@
 -->
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beans.xsd">
 
-	
+    <!-- 	extends CCPaymentInfoData -->
+    <bean class="de.hybris.platform.commercefacades.order.data.CCPaymentInfoData">
+        <property name="reference" type="java.lang.String"></property>
+    </bean>
 
 </beans>

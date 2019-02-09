@@ -1,0 +1,28 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.
+# All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+#
+# Create Warehouse and DeliveryMode relations for electronicsstore warehouses
+#
+
+$storeUid=flexi
+
+INSERT_UPDATE BaseStore2WarehouseRel;source(uid)[unique=true];target(code)[unique=true]
+;$storeUid;0700
+
+
+INSERT_UPDATE Warehouse2DeliveryModeRelation;source(code)[unique=true];target(code)[unique=true]
+;0700;premium-net
+;0700;standard-net
+;0700;premium-gross
+;0700;standard-gross
+;0700;pickup
+;0700;free-standard-shipping

@@ -86,9 +86,9 @@
 				$productCatalog=flexiProductCatalog
 				$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
 				$lang=es_MX
-				$varianttype=varianttype(code)[default='ApparelStyleVariantProduct']
-				$approvalstatus=approvalstatus(code)[default='approved']
-				INSERT_UPDATE Product;code[unique=true];name[lang=$lang];description[lang=$lang];$catalogVersion;$varianttype;$approvalstatus
+				$varianttype=varianttype(code)[default='FlexiVariantProductColor']
+				$approvalstatus=approvalstatus(code)[default='check']
+				INSERT_UPDATE FlexiProduct;code[unique=true];name[lang=$lang];description[lang=$lang];$catalogVersion;$varianttype;$approvalstatus
 			</value>
 		</property>
 		<property name="impexRow">
@@ -102,14 +102,14 @@
 				$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
 				$baseProduct=baseProduct(code, catalogVersion(catalog(id[default='$productCatalog']),version[default='Staged']))
 				$lang=es_MX
-				$varianttype=varianttype(code)[default='ApparelSizeVariantProduct']
-				$approvalstatus=approvalstatus(code)[default='approved']
+				$varianttype=varianttype(code)[default='FlexiVariantProductSize']
+				$approvalstatus=approvalstatus(code)[default='check']
 				# Insert style variant specific data
-				INSERT_UPDATE ApparelStyleVariantProduct;$baseProduct;code[unique=true];name[lang=$lang];description[lang=$lang];$catalogVersion;$varianttype;$approvalstatus
+				INSERT_UPDATE FlexiVariantProductColor;$baseProduct;code[unique=true];remarks[lang=$lang];linea;nombreLinea;colorSap[lang=es_MX];colorSap[lang=en];statusSap;tipoPielSap;forroSap;plantillaSap;recioSap;construccionSap;$catalogVersion;$varianttype;$approvalstatus
 			</value>
 		</property>
 		<property name="impexRow">
-			<value>;{+0};{+3};{4};{5}</value>
+			<value>;{+0};{+3};{9};{10};{11};{12};{13};{14};{15};{16};{17};{18};{19}</value>
 		</property>
 	</bean>
 	<bean id="batchFlexiSizeVariantConverter" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
@@ -119,13 +119,13 @@
 				$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
 				$baseProduct=baseProduct(code, catalogVersion(catalog(id[default='$productCatalog']),version[default='Staged']))
 				$lang=es_MX
-				$approvalstatus=approvalstatus(code)[default='approved']
+				$approvalstatus=approvalstatus(code)[default='check']
 				# Insert size variant specific data
-				INSERT_UPDATE ApparelSizeVariantProduct;$baseProduct;code[unique=true];name[lang=$lang];description[lang=$lang];$catalogVersion;$approvalstatus
+				INSERT_UPDATE FlexiVariantProductSize;$baseProduct;code[unique=true];size[lang=$lang];$catalogVersion;$approvalstatus
 			</value>
 		</property>
 		<property name="impexRow">
-			<value>;{+3};{+6};{7};{8}</value>
+			<value>;{+3};{+6};{20}</value>
 		</property>
 	</bean>
 	<bean id="batchFlexiPriceConverter" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
@@ -143,11 +143,11 @@
 		<property name="header">
 			<value>#{defaultImpexProductHeader}
 				# Insert Stock
-				INSERT_UPDATE StockLevel;productCode[unique=true];available[unique=true];warehouse(code)[unique=true];inStockStatus(code)
+				INSERT_UPDATE StockLevel;productCode[unique=true];available[unique=true];warehouse(code)[unique=true][default=0700];inStockStatus(code)[default=notSpecified]
 			</value>
 		</property>
 		<property name="impexRow">
-			<value>;{+0};{1};{+2};{3}</value>
+			<value>;{+0};{1}</value>
 		</property>
 	</bean>
 	<bean id="batchFlexiEstadoPedidoConverter" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">

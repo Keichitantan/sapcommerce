@@ -15,31 +15,39 @@
 <div class="ui-front">
 	<form name="search_form_${fn:escapeXml(component.uid)}" method="get"
 		action="${fn:escapeXml(searchUrl)}">
-		<div class="input-group">
-			<spring:theme code="search.placeholder" var="searchPlaceholderHtml" />
+		<div class="row">
+		    <spring:theme code="search.placeholder" var="searchPlaceholderHtml" />
+		    <div class="col-xs-4 flexi-gray">
+		        <p class="uppercase">${searchPlaceholderHtml}</p>
+		    </div>
+		    <div class="col-xs-8 space-left-search">
+		        <div class="input-group cienPorcent">
 
-			<ycommerce:testId code="header_search_input">
-				<c:set var="optionsJson">
-					{
-						"autocompleteUrl" : "${ycommerce:encodeJSON(autocompleteUrl)}",
-						"minCharactersBeforeRequest" : "${ycommerce:encodeJSON(component.minCharactersBeforeRequest)}",
-						"waitTimeBeforeRequest" : "${ycommerce:encodeJSON(component.waitTimeBeforeRequest)}",
-						"displayProductImages" : "${ycommerce:encodeJSON(component.displayProductImages)}"
-					}
-				</c:set>
-				<input type="text" id="js-site-search-input"
-					class="form-control js-site-search-input" name="text" value=""
-                    maxlength="100" placeholder="${searchPlaceholderHtml}"
-					data-options="${fn:escapeXml(optionsJson)}">
-			</ycommerce:testId>
+                			<ycommerce:testId code="header_search_input">
+                				<c:set var="optionsJson">
+                					{
+                						"autocompleteUrl" : "${ycommerce:encodeJSON(autocompleteUrl)}",
+                						"minCharactersBeforeRequest" : "${ycommerce:encodeJSON(component.minCharactersBeforeRequest)}",
+                						"waitTimeBeforeRequest" : "${ycommerce:encodeJSON(component.waitTimeBeforeRequest)}",
+                						"displayProductImages" : "${ycommerce:encodeJSON(component.displayProductImages)}"
+                					}
+                				</c:set>
+                				<input type="text" id="js-site-search-input"
+                					class="form-control js-site-search-input" name="text" value=""
+                                    maxlength="100"
+                					data-options="${fn:escapeXml(optionsJson)}">
+                			</ycommerce:testId>
 
-			<span class="input-group-btn"> <ycommerce:testId code="header_search_button">
-					<button class="btn btn-link js_search_button" type="submit" disabled="true">
-						<span class="glyphicon glyphicon-search"></span>
-					</button>
-				</ycommerce:testId>
-			</span>
+                			<span class="input-group-btn flexi-red"> <ycommerce:testId code="header_search_button">
+                					<button class="btn btn-link js_search_button" type="submit" disabled="true">
+                						<span class="glyphicon glyphicon-search"></span>
+                					</button>
+                				</ycommerce:testId>
+                			</span>
+                		</div>
+            </div>
 		</div>
+
 	</form>
 
 </div>

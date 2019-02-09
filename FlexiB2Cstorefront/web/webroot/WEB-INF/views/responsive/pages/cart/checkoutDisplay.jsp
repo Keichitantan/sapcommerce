@@ -8,7 +8,7 @@
 <spring:htmlEscape defaultHtmlEscape="true" />
 
 <c:url value="/cart/checkout" var="checkoutUrl" scope="session"/>
-<div class="row">
+<%--<div class="row">
     <div class="col-xs-12 col-sm-10 col-md-7 col-lg-6 pull-right cart-actions--print">
         <div class="express-checkout">
             <div class="headline"><spring:theme code="text.expresscheckout.header"/></div>
@@ -31,9 +31,9 @@
            </sec:authorize>
         </div>
     </div>
-</div>
+</div>--%>
 
-<div class="cart__actions">
+<%--<div class="cart__actions">
     <div class="row">
         <div class="col-sm-4 col-md-3 pull-right">
             <ycommerce:testId code="checkoutButton">
@@ -59,10 +59,10 @@
             </button>
         </div>
     </div>
-</div>
+</div>--%>
 
 
-<c:if test="${showCheckoutStrategies && not empty cartData.entries}" >
+<%--<c:if test="${showCheckoutStrategies && not empty cartData.entries}" >
     <div class="cart__actions">
         <div class="row">
             <div class="col-xs-12 col-sm-5 col-md-3 col-lg-2 pull-right">
@@ -84,4 +84,4 @@
             </div>
         </div>
     </div>
-</c:if>
+</c:if>--%>

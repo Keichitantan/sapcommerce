@@ -76,6 +76,7 @@ public class SummaryCheckoutStepController extends AbstractCheckoutStepControlle
 		model.addAttribute("allItems", cartData.getEntries());
 		model.addAttribute("deliveryAddress", cartData.getDeliveryAddress());
 		model.addAttribute("deliveryMode", cartData.getDeliveryMode());
+		cartData.getPaymentInfo().setReference("REF12345678");
 		model.addAttribute("paymentInfo", cartData.getPaymentInfo());
 
 		// Only request the security code if the SubscriptionPciOption is set to Default.
@@ -196,14 +197,14 @@ public class SummaryCheckoutStepController extends AbstractCheckoutStepControlle
 		}
 		final CartData cartData = getCheckoutFacade().getCheckoutCart();
 
-		if (!getCheckoutFacade().containsTaxValues())
+		/*if (!getCheckoutFacade().containsTaxValues())
 		{
 			LOGGER.error(String.format(
 					"Cart %s does not have any tax values, which means the tax cacluation was not properly done, placement of order can't continue",
 					cartData.getCode()));
 			GlobalMessages.addErrorMessage(model, "checkout.error.tax.missing");
 			invalid = true;
-		}
+		}*/
 
 		if (!cartData.isCalculated())
 		{

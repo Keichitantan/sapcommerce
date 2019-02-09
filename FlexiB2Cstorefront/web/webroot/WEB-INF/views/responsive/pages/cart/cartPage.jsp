@@ -16,10 +16,10 @@
 
 	<div class="cart-top-bar">
         <div class="text-right">
-            <spring:theme var="textHelpHtml" code="text.help" />
+            <%--<spring:theme var="textHelpHtml" code="text.help" />
             <a href="" class="help js-cart-help" data-help="${fn:escapeXml(textHelpHtml)}">${textHelpHtml}
                 <span class="glyphicon glyphicon-info-sign"></span>
-            </a>
+            </a>--%>
             <div class="help-popup-content-holder js-help-popup-content">
                 <div class="help-popup-content">
                     <strong>${fn:escapeXml(cartData.code)}</strong>

@@ -601,6 +601,31 @@
     text-align: center;
 }
 
+.text-checkout{
+    margin-top: 12px;
+
+    p{
+        @media (min-width: @screen-md) {
+            font-size: 14px !important;
+        }
+        @media (min-width: @screen-sm) and (max-width: @screen-md) {
+            font-size: 13px !important;
+        }
+        @media (min-width: @screen-xs) and (max-width: @screen-sm) {
+            font-size: 12px !important;
+        }
+        @media (max-width: @screen-xs){
+            font-size: 11px !important;
+        }
+    }
+}
+
+.img-checkout{
+    @media (max-width: @screen-xs){
+        margin-left: 40px;
+    }
+}
+
 .checkout-success__body__headline{
       font-size: 28px;
       font-weight: bold;

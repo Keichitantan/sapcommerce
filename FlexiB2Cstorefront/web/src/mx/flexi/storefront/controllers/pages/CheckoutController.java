@@ -88,6 +88,7 @@ public class CheckoutController extends AbstractCheckoutController
 	private static final String CHECKOUT_ORDER_CONFIRMATION_CMS_PAGE_LABEL = "orderConfirmation";
 	private static final String CONTINUE_URL_KEY = "continueUrl";
 	private static final String CONSENT_FORM_GLOBAL_ERROR = "consent.form.global.error";
+	private static final String CHECKOUT_DELIVERY_TIME = "checkout.orderConfirmation.deliverytime";
 
 	@Resource(name = "productFacade")
 	private ProductFacade productFacade;
@@ -272,8 +273,11 @@ public class CheckoutController extends AbstractCheckoutController
 		model.addAttribute("allItems", orderDetails.getEntries());
 		model.addAttribute("deliveryAddress", orderDetails.getDeliveryAddress());
 		model.addAttribute("deliveryMode", orderDetails.getDeliveryMode());
+		orderDetails.getPaymentInfo().setReference("REF123345678");
 		model.addAttribute("paymentInfo", orderDetails.getPaymentInfo());
 		model.addAttribute("pageType", PageType.ORDERCONFIRMATION.name());
+		final int deliveryTime = getSiteConfigService().getInt(CHECKOUT_DELIVERY_TIME, 2);
+		model.addAttribute("deliveryTime", Integer.valueOf(deliveryTime)+" días hábiles");
 
 		final List<CouponData> giftCoupons = orderDetails.getAppliedOrderPromotions().stream()
 				.filter(x -> CollectionUtils.isNotEmpty(x.getGiveAwayCouponCodes())).flatMap(p -> p.getGiveAwayCouponCodes().stream())

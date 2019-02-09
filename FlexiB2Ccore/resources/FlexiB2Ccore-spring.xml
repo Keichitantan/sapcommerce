@@ -72,6 +72,23 @@
 		<property name="rootCategory" value="collections"/> <!-- 'collections' is the root of the collections hierarchy -->
 	</bean>
 
+
+	<bean id="flexiCaballeroCategorySource" parent="abstractCategorySource">
+		<property name="rootCategory" value="Caballero"/>
+	</bean>
+
+	<bean id="flexiDamaCategorySource" parent="abstractCategorySource">
+		<property name="rootCategory" value="Dama"/>
+	</bean>
+
+	<bean id="flexiNinoCategorySource" parent="abstractCategorySource">
+		<property name="rootCategory" value="Ninos"/>
+	</bean>
+
+	<bean id="flexiOfertaCategorySource" parent="abstractCategorySource">
+		<property name="rootCategory" value="Ofertas"/>
+	</bean>
+
 	<bean id="abstractCategoryCodeValueProvider" abstract="true"
 	      class="de.hybris.platform.commerceservices.search.solrfacetsearch.provider.impl.CategoryCodeValueProvider"
 	      parent="abstractPropertyFieldValueProvider" >
@@ -115,6 +132,19 @@
 	</bean>
 	<bean id="apparelCollectionCategoryNameValueProvider" parent="abstractCategoryNameValueProvider">
 		<property name="categorySource" ref="apparelCollectionCategorySource"/>
+	</bean>
+
+	<bean id="flexiCaballeroCodeValueProvider" parent="abstractCategoryCodeValueProvider">
+		<property name="categorySource" ref="flexiCaballeroCategorySource"/>
+	</bean>
+	<bean id="flexiDamaCodeValueProvider" parent="abstractCategoryCodeValueProvider">
+		<property name="categorySource" ref="flexiDamaCategorySource"/>
+	</bean>
+	<bean id="flexiNinoCodeValueProvider" parent="abstractCategoryCodeValueProvider">
+		<property name="categorySource" ref="flexiNinoCategorySource"/>
+	</bean>
+	<bean id="flexiOfertaCodeValueProvider" parent="abstractCategoryCodeValueProvider">
+		<property name="categorySource" ref="flexiOfertaCategorySource"/>
 	</bean>
 
 	<bean id="image515ValueProvider" parent="abstractImageValueProvider" >
@@ -179,6 +209,12 @@
 	<bean id="electronicsPointOfServiceFacetDisplayNameProvider"
 	      class="mx.flexi.core.search.solrfacetsearch.provider.impl.PointOfServiceFacetDisplayNameProvider"
 	      >
+		<property name="pointOfServiceService" ref="pointOfServiceService"/>
+	</bean>
+
+	<bean id="flexiPointOfServiceFacetDisplayNameProvider"
+		  class="mx.flexi.core.search.solrfacetsearch.provider.impl.PointOfServiceFacetDisplayNameProvider"
+	>
 		<property name="pointOfServiceService" ref="pointOfServiceService"/>
 	</bean>
 

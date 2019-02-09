@@ -50,17 +50,6 @@
         <c:url value="${entry.product.url}" var="productUrl"/>
 
         <li class="item__list--item">
-            <%-- chevron for multi-d products --%>
-            <div class="hidden-xs hidden-sm item__toggle">
-                <c:if test="${entry.product.multidimensional}" >
-                    <div class="js-show-editable-grid" data-index="${fn:escapeXml(index)}" data-read-only-multid-grid="${not entry.updateable}">
-                        <ycommerce:testId code="cart_product_updateQuantity">
-                            <span class="glyphicon glyphicon-chevron-down"></span>
-                        </ycommerce:testId>
-                    </div>
-                </c:if>
-            </div>
-
             <%-- product image --%>
             <div class="item__image">
                 <a href="${fn:escapeXml(productUrl)}"><product:productPrimaryImage product="${entry.product}" format="thumbnail"/></a>
@@ -169,10 +158,10 @@
             </div>
 
             <%-- price --%>
-            <div class="item__price">
+            <%--<div class="item__price">
                 <span class="visible-xs visible-sm"><spring:theme code="basket.page.itemPrice"/>: </span>
                 <format:price priceData="${entry.basePrice}" displayFreeForZero="true"/>
-            </div>
+            </div>--%>
 
             <%-- quantity --%>
             <div class="item__quantity hidden-xs hidden-sm">
@@ -188,7 +177,7 @@
                             <input type="hidden" name="initialQuantity" value="${quantityHtml}"/>
                             <ycommerce:testId code="cart_product_quantity">
                                 <form:label cssClass="visible-xs visible-sm" path="quantity" for="quantity${entry.entryNumber}"></form:label>
-                                <form:input cssClass="form-control js-update-entry-quantity-input" disabled="${not entry.updateable}" type="text" size="1" id="quantity_${entry.entryNumber}" path="quantity" />
+                                <form:input cssClass="form-control js-update-entry-quantity-input" disabled="${not entry.updateable}" type="number" size="1" id="quantity_${entry.entryNumber}" path="quantity" />
                             </ycommerce:testId>
                         </form:form>
                     </c:when>
@@ -210,7 +199,7 @@
             </div>
 
             <%-- delivery --%>
-            <div class="item__delivery">
+            <%--<div class="item__delivery">
                 <c:if test="${entry.product.purchasable}">
                     <c:if test="${not empty entryStock and entryStock ne 'outOfStock'}">
                         <c:if test="${entry.deliveryPointOfService eq null or not entry.product.availableForPickup}">
@@ -225,7 +214,7 @@
                         <div class="item__delivery--store">${fn:escapeXml(entry.deliveryPointOfService.name)}</div>
                     </c:if>
                 </c:if>
-            </div>
+            </div>--%>
 
             <%-- total --%>
             <ycommerce:testId code="cart_totalProductPrice_label">
@@ -239,9 +228,34 @@
                 <c:if test="${entry.updateable}" >
                     <div class="btn-group js-cartItemDetailGroup">
                         <button type="button" class="btn btn-default js-cartItemDetailBtn" aria-haspopup="true" aria-expanded="false" id="editEntry_${entryNumberHtml}">
-                            <span class="glyphicon glyphicon-option-vertical"></span>
+                            <%--<span class="glyphicon glyphicon-option-vertical">asd</span>--%>
+                            <form:form id="cartEntryActionForm" action="" method="post" />
+                            <%-- Build entry numbers string for execute action -- Start --%>
+                            <c:choose>
+                                <c:when test="${entryNumberHtml eq -1}">
+                                    <%-- for multid entry --%>
+                                    <c:forEach items="${entry.entries}" var="subEntry" varStatus="stat">
+                                        <c:set var="actionFormEntryNumbers" value="${stat.first ? '' : actionFormEntryNumbers.concat(';')}${subEntry.entryNumber}" />
+                                    </c:forEach>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:set var="actionFormEntryNumbers" value="${entryNumberHtml}" />
+                                </c:otherwise>
+                            </c:choose>
+                            <%-- Build entry numbers string for execute action -- End --%>
+                            <c:forEach var="entryAction" items="${entry.supportedActions}">
+                                <c:url value="/cart/entry/execute/${ycommerce:encodeUrl(entryAction)}" var="entryActionUrl"/>
+                                <div class="js-execute-entry-action-button" id="actionEntry_${entryNumberHtml}"
+                                    data-entry-action-url="${fn:escapeXml(entryActionUrl)}"
+                                    data-entry-action="${fn:escapeXml(entryAction)}"
+                                    data-entry-product-code="${productCodeHtml}"
+                                    data-entry-initial-quantity="${quantityHtml}"
+                                    data-action-entry-numbers="${fn:escapeXml(actionFormEntryNumbers)}">
+                                    <span class="garbage-button glyphicon glyphicon-trash"></span>
+                                </div>
+                            </c:forEach>
                         </button>
-                        <ul class="dropdown-menu dropdown-menu-right">
+                        <%--<ul class="dropdown-menu dropdown-menu-right">
                             <c:if test="${not empty cartData.quoteData}">
                                 <c:choose>
                                     <c:when test="${not entry.product.multidimensional}">
@@ -260,20 +274,21 @@
                                     </c:otherwise>
                                 </c:choose>
                             </c:if>
-                            <form:form id="cartEntryActionForm" action="" method="post" />
+                            <form:form id="cartEntryActionForm" action="" method="post" />--%>
                              <%-- Build entry numbers string for execute action -- Start --%>
-                            <c:choose>
-					            <c:when test="${entryNumberHtml eq -1}"> <%-- for multid entry --%>
-					                <c:forEach items="${entry.entries}" var="subEntry" varStatus="stat">
+                            <%--<c:choose>
+					            <c:when test="${entryNumberHtml eq -1}">--%>
+					                <%-- for multid entry --%>
+					                <%--<c:forEach items="${entry.entries}" var="subEntry" varStatus="stat">
 						    			<c:set var="actionFormEntryNumbers" value="${stat.first ? '' : actionFormEntryNumbers.concat(';')}${subEntry.entryNumber}" />
 						    		</c:forEach>
 					            </c:when>
 					            <c:otherwise>
 					                <c:set var="actionFormEntryNumbers" value="${entryNumberHtml}" />
 					            </c:otherwise>
-					        </c:choose>
+					        </c:choose>--%>
 					        <%-- Build entry numbers string for execute action -- End --%>
-                            <c:forEach var="entryAction" items="${entry.supportedActions}">
+                         <%--<c:forEach var="entryAction" items="${entry.supportedActions}">
                                 <c:url value="/cart/entry/execute/${ycommerce:encodeUrl(entryAction)}" var="entryActionUrl"/>
                                 <li class="js-execute-entry-action-button" id="actionEntry_${entryNumberHtml}"
                                     data-entry-action-url="${fn:escapeXml(entryActionUrl)}"
@@ -284,7 +299,7 @@
                                     <a href="#"><spring:theme code="basket.page.entry.action.${entryAction}"/></a>
                                 </li>
                             </c:forEach>
-                        </ul>
+                        </ul>--%>
                     </div>
                 </c:if>
             </div>
@@ -309,7 +324,7 @@
                                     <input type="hidden" name="initialQuantity" value="${quantityHtml}"/>
                                     <ycommerce:testId code="cart_product_quantity">
                                         <form:label cssClass="" path="quantity" for="quantity${entry.entryNumber}"><spring:theme code="basket.page.qty"/>:</form:label>
-                                        <form:input cssClass="form-control js-update-entry-quantity-input" disabled="${not entry.updateable}" type="text" size="1" id="quantity_${entry.entryNumber}" path="quantity" />
+                                        <form:input cssClass="form-control js-update-entry-quantity-input" disabled="${not entry.updateable}" type="number" size="1" id="quantity_${entry.entryNumber}" path="quantity" />
                                     </ycommerce:testId>
                                 </form:form>
                             </c:when>
@@ -371,6 +386,17 @@
                                 <a class="btn" href="${fn:escapeXml(entryConfigUrl)}"><spring:theme code="basket.page.change.configuration"/></a>
                             </div>
                         </c:if>
+                    </div>
+                </c:if>
+            </div>
+
+            <%-- chevron for multi-d products --%>
+            <div class="hidden-xs hidden-sm item__toggle">
+                <c:if test="${entry.product.multidimensional}" >
+                    <div class="js-show-editable-grid" data-index="${fn:escapeXml(index)}" data-read-only-multid-grid="${not entry.updateable}">
+                        <ycommerce:testId code="cart_product_updateQuantity">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </ycommerce:testId>
                     </div>
                 </c:if>
             </div>

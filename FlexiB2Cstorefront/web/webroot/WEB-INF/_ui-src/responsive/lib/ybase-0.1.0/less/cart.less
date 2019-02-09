@@ -36,7 +36,7 @@
 
 .cart-top-bar{
 	background: @table-2n-line-bg;
-	padding: 10px;
+	/*padding: 10px;*/
     .full-width-padding();
 
 	a.help{
@@ -104,22 +104,26 @@
   padding-left: 30px;
   padding-right: 30px;
   padding-bottom: 32px;
+  margin-top: 80px;
 
   @media (max-width: @screen-md) {
     padding-left: 20px;
     padding-right: 20px;
+    margin-top: 50px;
   }
 
   @media (max-width: @screen-sm) {
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 10px;
+    margin-top: 30px;
   }
 }
 
 .item__list__cart {
   margin-top: 15px;
   margin-bottom: 10px;
+  border: 2px solid #f2f2f2;
   
   table td {
       padding: 0;
@@ -166,7 +170,6 @@
   }
 
   .item__list--item {
-    border-top: 1px solid @border-color-2;
     
     .item__image {
       padding: 10px;
@@ -392,7 +395,6 @@
 @media (max-width: @screen-xs-max) {
 
   .cart__actions {
-    margin: 0;
 
     .pull-right {
       float: none!important;
@@ -779,5 +781,40 @@ textarea.quote__comments--textarea{
     @media (min-width: @screenSm) and (max-width: @screen-sm-max) {
       padding: (@grid-gutter-width / 4) (@grid-gutter-width / 2);
       height: 28px;
+    }
+  }
+
+  .table-cart{
+    font-weight: bold;
+  }
+
+  .garbage-button{
+    color: #AAA;
+    &:hover {
+      color: #BBB;
+    }
+  }
+
+  .cart__actions-title{
+    font-size: 20;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .cart__actions-title{
+    font-size: 15px;
+  }
+
+  .checkoutButtonStyle{
+    background: #5ACD98;
+    color: #FFF !important;;
+    border: none;
+
+    &:hover, &:focus{
+      background: #5ACDBF;
+    }
+
+    &:active{
+      background: #47b6b1 !important;
     }
   }

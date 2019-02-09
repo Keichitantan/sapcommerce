@@ -1,0 +1,30 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+#
+# Update StockLevel information to include bin information
+#
+
+$vendor=flexi
+
+# Create some External Warehouses for the Vendor
+INSERT_UPDATE Warehouse;code[unique=true];name[lang=en];score;external[default=true];vendor(code)[default=$vendor];default[default='false'];
+
+
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[unique=true];productCode[unique=true];bin
+
+
+
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Nakano',unique=true];productCode[unique=true];bin
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Shinbashi',unique=true];productCode[unique=true];bin
+

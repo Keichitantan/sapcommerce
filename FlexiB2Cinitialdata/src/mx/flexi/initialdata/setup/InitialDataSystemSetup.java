@@ -121,6 +121,36 @@ public class InitialDataSystemSetup extends AbstractSystemSetup
 		LOG.info("Executing the FlexiB2Cnitialdata sampledata impex...");
 		getSampleDataImportService().execute(this, context, importData);
 		getEventService().publishEvent(new SampleDataImportedEvent(context, importData));
+		LOG.info("Executing the FlexiB2Cnitialdata projectdata impex...");
+		LOG.info("Executing the Flexi stocknotificationaddon projectdata impex...");
+		importImpexFile(context, "/FlexiB2Cinitialdata/import/projectdata/stocknotificationaddon/contentCatalogs/flexiContentCatalog/email-content.impex");
+		LOG.info("Executing the promotionenginesamplesaddon projectdata impex...");
+		importImpexFile(context, "/FlexiB2Cinitialdata/import/projectdata/promotionenginesamplesaddon/contentCatalogs/flexiContentCatalog/cms-responsive-content.impex");
+		importImpexFile(context, "/FlexiB2Cinitialdata/import/projectdata/promotionenginesamplesaddon/productCatalogs/flexiProductCatalog/products-addon-extra.impex");
+		importImpexFile(context, "/FlexiB2Cinitialdata/import/projectdata/promotionenginesamplesaddon/stores/flexi/promotions.impex");
+		LOG.info("Executing the Flexi pcmbackofficesamplesaddon projectdata impex...");
+		importImpexFile(context, "/FlexiB2Cinitialdata/import/projectdata/pcmbackofficesamplesaddon/productCatalogs/flexiProductCatalog/categories-classifications.impex");
+		importImpexFile(context, "/FlexiB2Cinitialdata/import/projectdata/pcmbackofficesamplesaddon/productCatalogs/flexiProductCatalog/users.impex");
+		importImpexFile(context, "/FlexiB2Cinitialdata/import/projectdata/pcmbackofficesamplesaddon/stores/flexi/solr.impex");
+		LOG.info("Executing the Flexi orderselfserviceaddon projectdata impex...");
+		importImpexFile(context, "/FlexiB2Cinitialdata/import/projectdata/orderselfserviceaddon/contentCatalogs/flexiContentCatalog/cms-content.impex");
+		LOG.info("Executing the Flexi ordermanagementaddon projectdata impex...");
+		importImpexFile(context, "/FlexiB2Cinitialdata/import/projectdata/ordermanagementaddon/contentCatalogs/flexiContentCatalog/email-content.impex");
+		importImpexFile(context, "/FlexiB2Cinitialdata/import/projectdata/ordermanagementaddon/productCatalogs/flexiProductCatalog/products-pos-stocklevels.impex");
+		importImpexFile(context, "/FlexiB2Cinitialdata/import/projectdata/ordermanagementaddon/stores/flexi/points-of-service.impex");
+		importImpexFile(context, "/FlexiB2Cinitialdata/import/projectdata/ordermanagementaddon/stores/flexi/store.impex");
+		importImpexFile(context, "/FlexiB2Cinitialdata/import/projectdata/ordermanagementaddon/stores/flexi/warehouses.impex");
+		LOG.info("Executing the Flexi customerticketingaddon projectdata impex...");
+		importImpexFile(context, "/FlexiB2Cinitialdata/import/projectdata/customerticketingaddon/contentCatalogs/flexiContentCatalog/cms-content.impex");
+		importImpexFile(context, "/FlexiB2Cinitialdata/import/projectdata/customerticketingaddon/contentCatalogs/flexiContentCatalog/cms-mobile-content.impex");
+		LOG.info("Executing the Flexi customerinterestsaddon projectdata impex...");
+		importImpexFile(context, "/FlexiB2Cinitialdata/import/projectdata/customerinterestsaddon/contentCatalogs/flexiContentCatalog/cms-content.impex");
+		LOG.info("Executing the Flexi consignmenttrackingaddon projectdata impex...");
+		importImpexFile(context, "/FlexiB2Cinitialdata/import/projectdata/consignmenttrackingaddon/contentCatalogs/flexiContentCatalog/cms-content.impex");
+		LOG.info("Executing the Flexi adaptivesearchsamplesaddon projectdata impex...");
+		importImpexFile(context, "/FlexiB2Cinitialdata/import/projectdata/adaptivesearchsamplesaddon/productCatalogs/flexiProductCatalog/products-addon-extra.impex");
+		importImpexFile(context, "/FlexiB2Cinitialdata/import/projectdata/adaptivesearchsamplesaddon/productCatalogs/flexiProductCatalog/users.impex");
+
 	}
 
 	public CoreDataImportService getCoreDataImportService()

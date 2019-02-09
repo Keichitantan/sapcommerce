@@ -70,16 +70,16 @@
         </div>
     </c:when>
     <c:otherwise>
-        <%-- Determine if product is one of apparel style or size variant --%>
-        <c:if test="${product.variantType eq 'ApparelStyleVariantProduct'}">
+        <%-- Determine if product is one of flexi color or size variant --%>
+        <c:if test="${product.variantType eq 'FlexiVariantProductColor'}">
             <c:set var="variantStyles" value="${product.variantOptions}"/>
         </c:if>
-        <c:if test="${(not empty product.baseOptions[0].options) and (product.baseOptions[0].variantType eq 'ApparelStyleVariantProduct')}">
+        <c:if test="${(not empty product.baseOptions[0].options) and (product.baseOptions[0].variantType eq 'FlexiVariantProductColor')}">
             <c:set var="variantStyles" value="${product.baseOptions[0].options}"/>
             <c:set var="variantSizes" value="${product.variantOptions}"/>
             <c:set var="currentStyleUrl" value="${product.url}"/>
         </c:if>
-        <c:if test="${(not empty product.baseOptions[1].options) and (product.baseOptions[0].variantType eq 'ApparelSizeVariantProduct')}">
+        <c:if test="${(not empty product.baseOptions[1].options) and (product.baseOptions[0].variantType eq 'FlexiVariantProductSize')}">
             <c:set var="variantStyles" value="${product.baseOptions[1].options}"/>
             <c:set var="variantSizes" value="${product.baseOptions[0].options}"/>
             <c:set var="currentStyleUrl" value="${product.baseOptions[1].selected.url}"/>
@@ -114,7 +114,7 @@
                         <ul class="variant-list">
                             <c:forEach items="${variantStyles}" var="variantStyle">
                                 <c:forEach items="${variantStyle.variantOptionQualifiers}" var="variantOptionQualifier">
-                                    <c:if test="${variantOptionQualifier.qualifier eq 'style'}">
+                                    <c:if test="${variantOptionQualifier.qualifier eq 'colorMkt'}">
                                         <c:set var="styleValueHtml" value="${fn:escapeXml(variantOptionQualifier.value)}"/>
                                         <c:set var="imageData" value="${variantOptionQualifier.image}"/>
                                     </c:if>

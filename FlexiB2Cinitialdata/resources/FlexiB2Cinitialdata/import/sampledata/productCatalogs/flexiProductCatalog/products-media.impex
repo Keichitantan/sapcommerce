@@ -15,7 +15,7 @@ $productCatalog=flexiProductCatalog
 $productCatalogName=Flexi Product Catalog
 $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
 $media=@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator]
-$siteResource=jar:mx.flexi.initialdata.constants.FlexiB2CInitialDataConstants&/apparelstore/import/sampledata/productCatalogs/$productCatalog
+$siteResource=jar:mx.flexi.initialdata.constants.FlexiB2CInitialDataConstants&/FlexiB2Cinitialdata/import/sampledata/productCatalogs/$productCatalog
 $thumbnail=thumbnail(code, $catalogVersion)
 $picture=picture(code, $catalogVersion)
 $thumbnails=thumbnails(code, $catalogVersion)
@@ -28,13 +28,46 @@ $galleryImages=galleryImages(qualifier, $catalogVersion)
 
 # Create medias
 INSERT_UPDATE Media;mediaFormat(qualifier);;code[unique=true];$media;mime[default='image/jpeg'];$catalogVersion;folder(qualifier)
+;1200Wx1200H;1390014092;/1200Wx1200H/1390014092.jpg;$siteResource/images/1200Wx1200H/1390014092_1200.jpg;;;images
+;515Wx515H;1390014092;/515Wx515H/1390014092.jpg;$siteResource/images/515Wx515H/1390014092_515.jpg;;;images
+;300Wx300H;1390014092;/300Wx300H/1390014092.jpg;$siteResource/images/300Wx300H/1390014092_300.jpg;;;images
+;96Wx96H;1390014092;/96Wx96H/1390014092.jpg;$siteResource/images/96Wx96H/1390014092_96.jpg;;;images
+;65Wx65H;1390014092;/65Wx65H/1390014092.jpg;$siteResource/images/65Wx65H/1390014092_65.jpg;;;images
+;30Wx30H;1390014092;/30Wx30H/1390014092.jpg;$siteResource/images/30Wx30H/1390014092_30.jpg;;;images
+
 
 INSERT_UPDATE MediaContainer;qualifier[unique=true];$medias;$catalogVersion
+;1390014092_cont;/515Wx515H/1390014092.jpg,/300Wx300H/1390014092.jpg,/96Wx96H/1390014092.jpg,/65Wx65H/1390014092.jpg,/30Wx30H/1390014092.jpg;
+
+UPDATE Product;code[unique=true];$picture;$thumbnail;$others;$normal;$thumbnails;$catalogVersion;$galleryImages
+;1390014092;/300Wx300H/1390014092.jpg;/96Wx96H/1390014092.jpg;/515Wx515H/1390014092.jpg,/300Wx300H/1390014092.jpg,/96Wx96H/1390014092.jpg,/65Wx65H/1390014092.jpg,/30Wx30H/1390014092.jpg;/300Wx300H/1390014092.jpg;/96Wx96H/1390014092.jpg;;1390014092_cont
 
 
-# Create medias
-INSERT_UPDATE Media;mediaFormat(qualifier);;code[unique=true];$media;mime[default='image/jpeg'];$catalogVersion;folder(qualifier)
 
 
+###### Flexi products
+
+#Imagenes Multimedia
+INSERT_UPDATE Media;code[unique=true]	;$media														;mime[default='image/jpg']	;folder(qualifier)	;mediaFormat(qualifier);$catalogVersion
+;/30Wx30H/1390016743_30.jpg				;$siteResource/images/30Wx30H/1390016743_30.jpg				;							;images				;30Wx30H				;
+;/65Wx65H/1390016743_65.jpg				;$siteResource/images/65Wx65H/1390016743_65.jpg				;							;images				;65Wx65H
+;/96Wx96H/1390016743_96.jpg				;$siteResource/images/96Wx96H/1390016743_96.jpg				;							;images				;96Wx96H
+;/300Wx300H/1390016743_300.jpg			;$siteResource/images/300Wx300H/1390016743_300.jpg			;							;images				;300Wx300H
+;/515Wx515H/1390016743_515.jpg			;$siteResource/images/515Wx515H/1390016743_515.jpg			;							;images				;515Wx515H
+;/1200Wx1200H/1390016743_1200.jpg		;$siteResource/images/1200Wx1200H/1390016743_1200.jpg		;							;images				;1200Wx1200H
+;/30Wx30H/1390016776_30.jpg				;$siteResource/images/30Wx30H/1390016776_30.jpg				;							;images				;30Wx30H
+;/65Wx65H/1390016776_65.jpg				;$siteResource/images/65Wx65H/1390016776_65.jpg				;							;images				;65Wx65H
+;/96Wx96H/1390016776_96.jpg				;$siteResource/images/96Wx96H/1390016776_96.jpg				;							;images				;96Wx96H
+;/300Wx300H/1390016776_300.jpg			;$siteResource/images/300Wx300H/1390016776_300.jpg			;							;images				;300Wx300H
+;/515Wx515H/1390016776_515.jpg			;$siteResource/images/515Wx515H/1390016776_515.jpg			;							;images				;515Wx515H
+;/1200Wx1200H/1390016776_1200.jpg		;$siteResource/images/1200Wx1200H/1390016776_1200.jpg		;							;images				;1200Wx1200H
+
+#Contenedores
 INSERT_UPDATE MediaContainer;qualifier[unique=true];$medias;$catalogVersion
+;1390016743;/30Wx30H/1390016743_30.jpg,/65Wx65H/1390016743_65.jpg,/96Wx96H/1390016743_96.jpg,/300Wx300H/1390016743_300.jpg,/515Wx515H/1390016743_515.jpg,/1200Wx1200H/1390016743_1200.jpg;
+;1390016776;/30Wx30H/1390016776_30.jpg,/65Wx65H/1390016776_65.jpg,/96Wx96H/1390016776_96.jpg,/300Wx300H/1390016776_300.jpg,/515Wx515H/1390016776_515.jpg,/1200Wx1200H/1390016776_1200.jpg;
 
+#Ranuras
+UPDATE Product;code[unique=true];$picture;$thumbnail;$detail;$others;$normal;$thumbnails;$galleryImages;$catalogVersion
+;1390016743;/300Wx300H/1390016743_300.jpg;/96Wx96H/1390016743_96.jpg;/1200Wx1200H/1390016743_1200.jpg;/515Wx515H/1390016743_515.jpg,/65Wx65H/1390016743_65.jpg,/30Wx30H/1390016743_30.jpg;/300Wx300H/1390016743_300.jpg;/96Wx96H/1390016743_96.jpg;1390016743;
+;1390016776;/300Wx300H/1390016776_300.jpg;/96Wx96H/1390016776_96.jpg;/1200Wx1200H/1390016776_1200.jpg;/515Wx515H/1390016776_515.jpg,/65Wx65H/1390016776_65.jpg,/30Wx30H/1390016776_30.jpg;/300Wx300H/1390016776_300.jpg;/96Wx96H/1390016776_96.jpg;1390016776;

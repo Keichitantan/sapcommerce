@@ -37,6 +37,33 @@
   margin-top: 27px;
   padding-left: 30px;
 }
+
+.metodos-pago{
+  margin-top: 27px;
+}
+
+.metodos-pago-img{
+    margin-top: 10px;
+}
+
+.metodos-pago-txt{
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  @media (max-width: 410px){
+    font-size: 7px !important;
+  }
+
+  @media (max-width: @screen-xs) AND (min-width: 410px) {
+    font-size: 8px !important;
+  }
+
+  @media (max-width: @screen-sm) {
+    font-size: 9px;
+  }
+}
+
 .cart-voucher__label {
   display: block;
   width: 100%;
@@ -44,7 +71,6 @@
 .cart-voucher__input {
   width: 50%;
   float: left;
-  margin-right: @grid-gutter-width/2;
 }
 .cart-voucher__input::-moz-placeholder {
   .cart-voucher-placeholder();
@@ -63,9 +89,26 @@
   }
 }
 
+.card-button-cupon{
+   background: #FFF;
+   border: 1px solid #5ACD98;
+   color: #5ACD98;
+   padding: 8px 15px;
+   width: 35%;
+   &:hover{
+      background: #5ACD98;
+      border: 1px solid #FFF;
+   }
+   @media (max-width: 550px){
+      width: 45%;
+      padding: 11px 13px;
+      font-size: 12px;
+   }
+}
+
 @media (max-width: @screen-md-max) and (min-width: @screen-md-min) {
   .cart-voucher__input {
-    width: 70%;
+    width: 65%;
   }
 }
 @media (max-width: @screen-sm-max) and (min-width: @screen-sm-min) {

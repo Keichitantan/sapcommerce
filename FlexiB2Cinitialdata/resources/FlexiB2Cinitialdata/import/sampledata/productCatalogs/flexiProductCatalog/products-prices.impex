@@ -14,3 +14,9 @@
 # Insert Product prices
 
 INSERT_UPDATE PriceRow;productId[unique=true];unit(code[unique=true,default=pieces]);currency(isocode)[unique=true];price;minqtd;unitFactor;net
+;1390014092;PR;MXN;900;1;1;false
+;7500421187975;PR;MXN;900;1;1;false
+;7500421336762;PR;MXN;900;1;1;false
+;7500421336779;PR;MXN;900;1;1;false                        
+;7500421335260;PR;MXN;900;1;1;false
+;7500421335277;PR;MXN;900;1;1;false

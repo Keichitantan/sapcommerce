@@ -1,4 +1,4 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%--<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <spring:htmlEscape defaultHtmlEscape="true" />
 
@@ -7,4 +7,4 @@
 	<a href="${exportUrl}" class="export__cart--link">
 		<spring:theme code="basket.export.csv.file" />
 	</a>
-</div>
+</div>--%>

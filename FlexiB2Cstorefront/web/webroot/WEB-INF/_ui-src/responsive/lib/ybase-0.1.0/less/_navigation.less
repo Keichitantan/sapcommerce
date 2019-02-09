@@ -152,32 +152,29 @@ ul.nav__links {
 #accNavComponentDesktopOne,
 #accNavComponentDesktopTwo {
   padding: 0;
-  background-color: @meta-nav-background;
+  background-color: @meta-nav-color-open;
 
   ul.nav__links {
     width: 100%;
-    padding: 0px;
-    margin-bottom: 0px;
+    padding: 0px 17px;
+    border: .5px solid #ABABAB;
 
     li {
       text-transform: capitalize;
       list-style: none;
       font-size: 12px;
-      color: @meta-nav-color;
+      color: @accordion-bg;
       font-weight: 400;
       padding: 0;
-      border-right: 1px solid @meta-nav-border-color;
-      border-bottom: 1px solid @meta-nav-border-color;
+      border-right: none;
+      border-bottom: 1px solid #9b9b9a;
 
-      &:hover {
-        background-color: @meta-nav-hover-background;
-      }
 
       a {
-        color: @meta-nav-color-open;
+        color: @accordion-bg;
         display: block;
-        padding: 25px 0 25px 30px;
-        font-size: 15px;
+        padding: 12px 0 12px 25px;
+        font-size: 12px;
         font-weight: 400;
 
         &:hover {
@@ -429,12 +426,11 @@ ul.nav__links {
   .nav-order-tools,
   .nav-location,
   .nav-cart {
-    height: @navigation--middle-height;
+
   }
 
   .nav-order-tools,
   .nav-location,
-  .nav-cart,
   .btn {
     &:hover, &:active, &:focus {
       background-color: @nav-icon-hover-background;
@@ -443,13 +439,6 @@ ul.nav__links {
   }
 
   .nav-cart {
-    float: right;
-    padding: 0 10px;
-
-    @media (min-width: @screen-sm) {
-      padding-left: 30px;
-    }
-
     @media (max-width: @screen-xs-max) {
       position: relative;
       float: none;
@@ -474,7 +463,7 @@ ul.nav__links {
     .mini-cart-link {
       color: @nav-icon-color;
 
-      @media (min-width:@screen-sm) {
+      @media (max-width:@screen-sm) {
         line-height: 55px;
         white-space: nowrap;
       }
@@ -488,11 +477,10 @@ ul.nav__links {
           top: 10px;
 
           .glyphicon-shopping-cart {
-            width: @mobile-nav-icon-font-size;
             font-size: 22px;
             position: relative;
             right: -6px;
-            top: 3px;
+            top: 0px;
           }
         }
         .mini-cart-count {
@@ -542,12 +530,6 @@ ul.nav__links {
     }
 
     .mini-cart-icon {
-      @media (min-width:@screen-sm) {
-        float: right;
-        position: relative;
-        top: 5px;
-      }
-
       .glyphicon-shopping-cart {
         font-size: 22px;
 
@@ -582,7 +564,7 @@ ul.nav__links {
 
       .mobile__nav__row--table-cell{
         display: table-cell !important;
-        vertical-align: top;
+        vertical-align: middle;
       }
 
 
@@ -683,8 +665,8 @@ ul.nav__links {
 }
 
 .navigation--bottom {
-  background-color: @nav-cat-background;
-  border-bottom: 1px solid @nav-cat-border;
+  background-color: #FFF;
+  border-bottom: 1px solid #FFF;
 
   @media (max-width: @screen-sm-max){
     border-bottom: none;
@@ -846,7 +828,8 @@ ul.nav__links {
         line-height: 20px;
         padding: 20px 15px;
         display: block;
-        color:  @nav-cat-link-color;
+        color: #2F2F2F;
+        font-weight: bold;
 
         @media (max-width: @screen-sm-max) {
           margin-top:0;
@@ -1216,9 +1199,6 @@ ul.nav__links {
       border: none;
       color: @offcanvas-nav-header-color;
 
-      &:hover {
-        background-color: transparent !important;
-      }
     }
   }
 
@@ -1507,4 +1487,50 @@ main.offcanvas {
 
 .search-results-highlight {
 	font-weight: bold;
+}
+
+.tam-resp {
+    @media (min-width: @screen-sm-max) {
+        width: 25% !important;
+    }
+}
+
+.header4{
+    @media (min-width: @screen-sm-max) {
+        width: 25% !important;
+    }
+}
+
+.header5{
+    @media (min-width: @screen-sm-max) {
+        width: 20% !important;
+    }
+}
+
+.myAccount-li{
+    background: $FFF !important;
+    &:hover{
+        .myAccount-arrow, .myAccount-text{
+           color: #EC1F26;
+        }
+    }
+    .myAccount-arrow{
+        width: 12%;
+        color: #666;
+        display: inline-block;
+    }
+    .myAccount-text{
+        width: 75%;
+        display: inline-block;
+    }
+}
+
+.border-none{
+    border: none !important;
+}
+
+.prueba{
+    &:hover{
+        cursor: pointer;
+    }
 }
