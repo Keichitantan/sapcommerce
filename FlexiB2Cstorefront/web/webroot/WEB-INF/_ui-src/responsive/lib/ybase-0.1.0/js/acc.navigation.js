@@ -203,8 +203,6 @@ ACC.navigation = {
             oLink.href = aAcctData[i].link;
             var split = aAcctData[i].link.split("/");
             var ultimo = split.pop ();
-            console.log(aAcctData[i].link);
-            console.log(ultimo);
 
             var red = '/_ui/responsive/common/images/iconos/WEB/UI icons/'+ultimo+'_rojo.png';
             var normal = '/_ui/responsive/common/images/iconos/WEB/UI icons/'+ultimo+'.png';

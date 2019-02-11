@@ -216,23 +216,22 @@
 
 	<a id="skiptonavigation"></a>
 	<nav:topNavigation />
+
+	<%-- a hook for the my account links in desktop/wide desktop--%>
+    <div class="row col-xs-2" style="margin:0;">
+        <div class="hidden-xs hidden-sm js-secondaryNavAccount collapse col-md-12 col-lg-12" id="accNavComponentDesktopOne">
+            <ul class="nav__links">
+
+            </ul>
+        </div>
+    </div>
+    <div class="hidden-xs hidden-sm js-secondaryNavCompany collapse" id="accNavComponentDesktopTwo">
+        <ul class="nav__links js-nav__links">
+
+        </ul>
+    </div>
 </header>
 
 <cms:pageSlot position="BottomHeaderSlot" var="component" element="div"	class="container-fluid">
 	<cms:component component="${component}" />
 </cms:pageSlot>
-
-
-<%-- a hook for the my account links in desktop/wide desktop--%>
-<div class="row col-xs-2" style="margin:0;">
-    <div class="hidden-xs hidden-sm js-secondaryNavAccount collapse col-md-12 col-lg-12" id="accNavComponentDesktopOne">
-        <ul class="nav__links">
-
-        </ul>
-    </div>
-</div>
-<div class="hidden-xs hidden-sm js-secondaryNavCompany collapse" id="accNavComponentDesktopTwo">
-    <ul class="nav__links js-nav__links">
-
-    </ul>
-</div>
