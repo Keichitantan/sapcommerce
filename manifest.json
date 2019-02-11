@@ -149,7 +149,7 @@
         },	    
         {
             "key": "cloud.hotfolder.default.mapping.file.name.pattern",
-            "value": "^(customer|product|url_media|flexi_product)-\\d+.*"
+            "value": "^(customer|product|url_media|flexi_stock|flexi_price|flexi_product)-\\d+.*"
         },
         {
             "key": "cloud.hotfolder.storage.file.sort.name.prefix.priority",
